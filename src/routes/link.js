@@ -15,12 +15,8 @@ export default (req, res) => {
         res.send("An error was encountered! Please try again.");
     }
     // The shortened link: our server address with the unique id
-    console.log({
-        message: `http://localhost:8000/${newURL.id}`,
-        type: "success",
-    })
     res.json({
-        message: `http://localhost:8000/${newURL.id}`,
+        message: `/${newURL.id}`,
         type: "success",
     });
 }

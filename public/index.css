@@ -1,113 +1,126 @@
-body {
-    background-color: #0d0e12;
-    color: white;
-    padding: 0;
+:root {
+    --primary-color: #262835;
+    --secondary-color: #2a2d39;
+    --third-color: #383a4a;
+
+    --border-primary: rgb(41, 41, 41);
+
+    --gradient-start: #f6dec9;
+    --gradient-end: #dec8f5;
+
+    --primary-cl: #fff;
+}
+
+html, body, * {
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: 'Roboto', sans-serif;
 }
 
-.container {
+body {
+    background: var(--primary-color);
+}
+
+nav {
+    padding: 25px 100px;
+
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    border-bottom: 1px solid var(--border-primary);
+
+    background: var(--secondary-color);
+
     display: flex;
-    flex-direction: column;
-    place-items: center;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 50%;
-    width: 400px;
-    height: 450px;
-    border-radius: 4px;
-    background-color: #ef2d5e;
-    padding: 10px;
-}
-
-.header {
-    font-size: 36px;
-    font-weight: bold;
-}
-
-.btn {
-    height: 35px;
-    width: 120px;
-    border-radius: 4px;
-    background-image: linear-gradient(
-        to bottom,
-        rgb(235 222 63),
-        rgb(243 161 5)
-    );
-    border: none;
-    outline: none;
-    color: white;
-    box-shadow: 0 3px 6px #d7a827;
-}
-
-.btn:hover {
-    cursor: pointer;
-}
-
-.form {
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    place-items: center;
 }
 
-input {
-    height: 35px;
-    width: 320px;
-    border-radius: 4px;
-    background-color: #fff;
-    color: black;
-    outline: none;
-    border: none;
-    margin: 10px 0;
-    padding: 10px;
-}
+nav .nav-logo {
+    font-size: 17px;
+    font-weight: 600;
 
-input:focus {
-    border: 2px solid rgb(243 85 144);
-    outline: none;
-}
-.error {
-    color: black;
-    margin: 10px 0;
-    font-weight: bold;
-}
-
-.link-wrapper {
-    display: none;
-    flex-direction: column;
-    margin: 75px 0;
-    place-items: center;
-    opacity: 0;
-    transition: scale 1s ease-in-out;
-    scale: 0;
-}
-
-.link-text {
-    font-weight: bold;
-    color: black;
-    margin: 5px 0;
-}
-
-.short-link {
     display: flex;
-    place-items: center;
-    place-content: center;
-    width: 300px;
-    height: 50px;
-    background-color: wheat;
-    border-radius: 4px;
-    padding: 10px;
-    margin: 10px;
-    color: black;
-    font-weight: bold;
-    box-shadow: 0 3px 6px #afada9ba;
+    align-items: center;
 }
 
-.loader {
-    width: 40px;
-    height: 40px;
+nav .nav-logo svg {
+    margin-right: 15px;
+}
+
+nav .links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .links .link {
+    margin: 0 20px;
+    color: var(--primary-cl);
+
+    text-decoration: none;
+    opacity: .7;
+
+    position: relative;
+}
+
+nav .links .link::after {
+    background: -webkit-linear-gradient(var(--gradient-start), var(--gradient-end));
+    width: 100%;
+    content: '';
+
+    position: absolute;
+    transform: translate(-50%, 300%) rotate(0);
+
+    height: 2px;
+    border-radius: 5px;
+
+    bottom: -5px;
+    left: 50%;
+
+    opacity: 0;
+    transition: .2s;
+}
+
+nav .links .link:nth-child(1):hover::after { transform: translate(-50%, 0%) rotate(1deg); }
+nav .links .link:nth-child(2):hover::after { transform: translate(-50%, 0%) rotate(0.5deg); }
+nav .links .link:nth-child(3):hover::after { transform: translate(-50%, 0%) rotate(-0.5deg); }
+nav .links .link:nth-child(4):hover::after { transform: translate(-50%, 0%) rotate(-1deg); }
+
+nav .links .link:hover::after {
+    opacity: 1;
+}
+
+nav .links .link:hover {
+    opacity: .9;
+}
+
+nav .links .button {
+    margin-left: 30px;
+}
+
+/* COMPONENTS */
+
+.button {
+    font-size: 15px;
+
+    padding: 10px;
+    border-radius: 5px;
+
+    cursor: pointer;
+    transition: .2s;
+}
+
+.button:hover {
+    transform: translateY(-5px);
+}
+
+.bg-gradient {
+    background: -webkit-linear-gradient(0.5turn, var(--gradient-start), var(--gradient-end));
+}
+
+.text-gradient {
+    background: -webkit-linear-gradient(0.5turn, var(--gradient-start), var(--gradient-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
