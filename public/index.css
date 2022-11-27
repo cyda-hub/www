@@ -3,7 +3,7 @@
     --secondary-color: #2a2d39;
     --third-color: #383a4a;
 
-    --border-primary: rgb(41, 41, 41);
+    --border-primary: rgb(77, 77, 77);
 
     --gradient-start: #f6dec9;
     --gradient-end: #dec8f5;
@@ -106,7 +106,7 @@ header {
     align-items: center;
     justify-content: space-around;
 
-    padding: 0 200px;
+    padding: 0 10%;
     margin: 200px 0;
 }
 
@@ -141,9 +141,108 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-around;
+
+    margin: 0 10%;
+}
+
+main .card {
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-primary);
+    background: var(--secondary-color);
+
+    display: flex;
+    max-width: 300px;
+
+    transition: .2s;
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+}
+
+main .card:hover {
+    transform: translateY(-5%);
+}
+
+main .card svg.icon {
+    width: 30px;
+    height: 30px;
+
+    color: var(--primary-cl);
+}
+
+
+main .card > div:nth-child(2) {
+    margin-left: 20px;
+}
+
+main .card div .title {
+    color: var(--primary-cl);
+    margin-bottom: 5px;
+}
+
+main .card div .desc {
+    color: var(--primary-cl);
+    opacity: .6;
+
+    font-size: 15px;
+}
+
+main .card div .btn {
+    color: var(--primary-cl);
+    opacity: .6;
+
+    margin-top: 50px;
+    width: min-content;
+}
+
+main .card div .btn svg {
+    width: 20px;
+    height: 20px;
 }
 
 /* COMPONENTS */
+
+.input {
+    background: var(--third-color);
+    border: 1px solid var(--border-primary);
+    border-radius: 5px;
+
+    position: relative;
+    background: var(--primary-color);
+
+    display: flex;
+    align-items: center;
+}
+
+.input .icon {
+    width: min-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    padding: 0 15px;
+}
+
+.input .icon svg {
+    width: 10px;
+    height: 10px;
+}
+
+input {
+    background: var(--third-color);
+    padding: 10px;
+
+    color: var(--primary-cl);
+
+    border: none;
+    outline: none;
+    width: 100%;
+}
+
+input:focus {
+    outline: none;
+    border: none;
+}
 
 .button {
     font-size: 15px;
@@ -187,4 +286,35 @@ main {
     background: -webkit-linear-gradient(0.5turn, var(--gradient-start), var(--gradient-end));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* popups override */
+
+.easy-popup-inner > div:first-child {
+    background: var(--primary-color) !important;
+    color: var(--primary-cl);
+}
+
+.easy-popup-inner > div[data-easy-popup="qr-code-popup"]:first-child {
+    padding: 0 !important;
+    /* width: min-content; */
+    max-width: 400px;
+
+    margin: 0 auto;
+}
+
+.easy-popup-inner > div[data-easy-popup="qr-code-popup"]:first-child .qr-section {
+    padding: 30px 10px;
+    border-bottom: 1px solid var(--border-primary);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#qr-code-result {
+    padding: 15px;
+    background: var(--primary-color);
+    border: 1px solid var(--border-primary);
+    border-radius: 5px;
 }
