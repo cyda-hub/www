@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.7.3",
+    "nanoid": "^4.0.0",
+    "url-exist": "^3.0.1"
+  }
+}
