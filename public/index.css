@@ -99,6 +99,50 @@ nav .links .button {
     margin-left: 30px;
 }
 
+/* header */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 0 200px;
+    margin: 200px 0;
+}
+
+header h1 {
+    color: var(--primary-cl);
+    font-size: 60px;
+}
+
+header div:last-child p {
+    color: var(--primary-cl);
+    opacity: .7;
+
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+header div:last-child .buttons {
+    display: flex;
+    align-items: center;
+
+    margin-top: 10px;
+}
+
+header div:last-child .buttons .button:hover svg {
+
+    transform: translateX(5px);
+}
+
+/* main */
+
+main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
 /* COMPONENTS */
 
 .button {
@@ -107,12 +151,32 @@ nav .links .button {
     padding: 10px;
     border-radius: 5px;
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     cursor: pointer;
     transition: .2s;
 }
 
 .button:hover {
     transform: translateY(-5px);
+}
+
+.bg-secondary {
+    background: var(--secondary-color);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    color: var(--primary-cl);
+    opacity: .8;
+}
+
+.bg-third {
+    background: var(--third-color);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    color: var(--primary-cl);
+    opacity: .8;
+
+    border: 1px solid var(--border-primary);
 }
 
 .bg-gradient {
