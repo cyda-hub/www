@@ -1,5 +1,8 @@
 
 import URL from "../models/urlModel.js";
+import path from "path";
+
+const __dirname = path.resolve();
 
 export default async (req, res) => {
     const id = req.params.id;

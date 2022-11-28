@@ -9,6 +9,7 @@
     --gradient-end: #dec8f5;
 
     --primary-cl: #fff;
+    --inverted-cl: #000;
 }
 
 html, body, * {
@@ -290,17 +291,26 @@ input:focus {
 
 /* popups override */
 
+.easy-popup-close-button {
+    cursor: pointer;
+    filter: invert(100%);
+}
+
 .easy-popup-inner > div:first-child {
     background: var(--primary-color) !important;
     color: var(--primary-cl);
 }
 
+.easy-popup-inner:has(div[data-easy-popup="qr-code-popup"]) {
+    max-width: 400px;
+    margin: 0 auto;
+
+}
+
 .easy-popup-inner > div[data-easy-popup="qr-code-popup"]:first-child {
     padding: 0 !important;
     /* width: min-content; */
-    max-width: 400px;
-
-    margin: 0 auto;
+    border: 1px solid var(--border-primary);
 }
 
 .easy-popup-inner > div[data-easy-popup="qr-code-popup"]:first-child .qr-section {
@@ -310,6 +320,30 @@ input:focus {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.easy-popup-inner > div[data-easy-popup="qr-code-popup"]:first-child .qr-section:last-child {
+    border: none;
+    padding: 20px 30px;
+}
+
+.easy-popup-inner > div[data-easy-popup="qr-code-popup"]:first-child .qr-section:last-child .button {
+    width: 100%;
+}
+
+.easy-popup-inner > div[data-easy-popup="qr-code-popup"]:first-child .qr-section:last-child .button:first-child {
+    color: var(--inverted-cl);
+}
+
+.easy-popup-inner > div[data-easy-popup="qr-code-popup"]:first-child .qr-section:last-child .button:last-child {
+    margin-left: 20px;
+}
+
+.easy-popup-inner > div[data-easy-popup="qr-code-popup"]:first-child .qr-section:last-child svg {
+    width: 20px;
+    height: 20px;
+
+    margin-right: 10px;
 }
 
 #qr-code-result {
