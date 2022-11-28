@@ -5,13 +5,16 @@ const QR_RESULT = document.getElementById("qr-code-result");
 var qr = undefined;
 
 QR_INPUT.addEventListener("input", (e) => {
+    qr.makeCode(e.target.value)
+})
 
-    if (typeof qr === "undefined") {
+window.addEventListener("load", () => {
+    setTimeout(() => {
         var pc = getComputedStyle(document.body).getPropertyValue("--primary-color");
         var tc = getComputedStyle(document.body).getPropertyValue("--primary-cl");
-
+    
         var qrcode = new QRCode("qr-code-result", {
-            text: e.target.value,
+            text: " ",
             width: 128,
             height: 128,
             colorDark : tc,
@@ -20,8 +23,5 @@ QR_INPUT.addEventListener("input", (e) => {
         });
 
         qr = qrcode;
-    } else {
-        qr.makeCode(e.target.value)
-    }
-
+    }, 0)
 })
