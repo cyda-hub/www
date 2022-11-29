@@ -18,7 +18,6 @@ const setTheme = (isDark) => {
         ROOT.style.setProperty("--primary-cl", "#fff");
         ROOT.style.setProperty("--inverted-cl", "#000");
     } else {
-        console.log("not dark!")
         ROOT.style.setProperty("--primary-color", "#FFF");
         ROOT.style.setProperty("--secondary-color", "#F7F8FB");
         ROOT.style.setProperty("--third-color", "rgb(229, 231, 235)");

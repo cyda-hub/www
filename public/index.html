@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>URL Shortener</title>
     <link rel="stylesheet" href="./index.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="/vendor/easy-popup/index.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -161,7 +156,7 @@
                 </div>
                 <div class="button bg-third">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    Export
+                    <span>Export</span>
                 </div>
             </div>
         </div>
@@ -171,7 +166,37 @@
             data-easy-popup-theme="right-side"
             data-easy-popup-close-button
             data-easy-popup-click-outside-to-close="true">
-            <p>Your content.</p>
+            <div class="half-section">
+                <div class="link-section center">
+                    Generate link
+                </div>
+                <div class="section-line"></div>
+                <div class="link-section please-margin-top">
+                    <div class="input-subtitle">Destination URL</div>
+                    <div class="input">
+                        <div class="icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                        </div>
+                        <input id="qr-input-url" type="text" placeholder="Enter URL to customize.">
+                    </div>
+                    <div style="height: 40px;"></div>
+                    <div class="input-subtitle">Custom code for URL</div>
+                    <div class="input">
+                        <div class="icon">
+                            <script>document.write(window.location.hostname)</script>
+                        </div>
+                        <input id="qr-input-url" type="text" placeholder="Custom code for the short URL">
+                    </div>
+                </div>
+                <div class="section-line" style="margin-top: 50px; margin-bottom: 50px;">
+                    <div>Optional</div>
+                </div>
+            </div>
+            <div>
+                <div class="link-section">
+                    Social Previews
+                </div>
+            </div>
         </div>
     </div>
     <script src="/vendor/easy-popup/index.js"></script>
