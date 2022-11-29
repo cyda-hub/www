@@ -43,16 +43,12 @@ const onload = () => {
     }
 }
 
-window.addEventListener ?
-    window.addEventListener("load",onload,false)
-    :
-    window.attachEvent && window.attachEvent("onload",onload);
+onload();
 
 THEME_BG.addEventListener("click", () => {
     let isDark = localStorage.getItem(THEME_SELECTOR) === "1";
     let theme = !isDark;
 
-    console.log(theme)
     setTheme(theme);
     localStorage.setItem(THEME_SELECTOR, theme ? "1" : "0")
 })
