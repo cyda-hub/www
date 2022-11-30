@@ -33,7 +33,7 @@ const setTheme = (isDark) => {
 }
 
 const onload = () => {
-    if (typeof localStorage.getItem(THEME_SELECTOR) === "null") {
+    if (localStorage.getItem(THEME_SELECTOR) === null) {
         localStorage.setItem(THEME_SELECTOR, "1");
         setTheme(true);
     } else {
