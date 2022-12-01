@@ -17,6 +17,13 @@ const setTheme = (isDark) => {
 
         ROOT.style.setProperty("--primary-cl", "#fff");
         ROOT.style.setProperty("--inverted-cl", "#000");
+
+        let node = document.createElement("meta");
+
+        node.name = "color-scheme";
+        node.content = "dark";
+
+        document.head.appendChild(node);
     } else {
         ROOT.style.setProperty("--primary-color", "#FFF");
         ROOT.style.setProperty("--secondary-color", "#F7F8FB");

@@ -204,6 +204,7 @@ main .card div .btn svg {
 
     display: flex;
     align-items: center;
+    overflow: hidden;
 }
 
 .input .icon {
