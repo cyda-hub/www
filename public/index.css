@@ -249,6 +249,8 @@ input:focus {
 
     cursor: pointer;
     transition: .2s;
+
+    user-select: none;
 }
 
 .button.sqr {
@@ -367,7 +369,52 @@ input:focus {
     margin-left: 20px;
 }
 
-.easy-popup-inner > div[data-easy-popup="qr-code-popup"]:first-child .qr-section:last-child svg {
+.easy-popup-inner > div[data-easy-popup="qr-code-popup"]:first-child .qr-section:last-child .button svg {
+    width: 20px;
+    height: 20px;
+
+    margin-right: 10px;
+}
+
+.easy-popup-inner:has(div[data-easy-popup="created-link-popup"]) {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.easy-popup-inner > div[data-easy-popup="created-link-popup"]:first-child {
+    padding: 0 !important;
+    /* width: min-content; */
+    border: 1px solid var(--border-primary);
+}
+
+.easy-popup-inner > div[data-easy-popup="created-link-popup"]:first-child .link-section {
+    padding: 30px 10px;
+    border-bottom: 1px solid var(--border-primary);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.easy-popup-inner > div[data-easy-popup="created-link-popup"]:first-child .link-section:last-child {
+    border: none;
+    padding: 20px 30px;
+}
+
+.easy-popup-inner > div[data-easy-popup="created-link-popup"]:first-child .link-section:last-child .button {
+    width: 100%;
+}
+
+.easy-popup-inner > div[data-easy-popup="created-link-popup"]:first-child .link-section:last-child .button:first-child {
+    color: var(--inverted-cl);
+    width: 90%;
+}
+
+.easy-popup-inner > div[data-easy-popup="created-link-popup"]:first-child .link-section:last-child .button:last-child {
+    margin-left: 20px;
+}
+
+.easy-popup-inner > div[data-easy-popup="created-link-popup"]:first-child .link-section:last-child .button svg {
     width: 20px;
     height: 20px;
 
@@ -382,8 +429,22 @@ input:focus {
 }
 
 .easy-popup-inner > div[data-easy-popup="link-gen-popup"]:first-child .link-section {
+    --section-space: 40px;
+
     margin: 20px auto;
     padding: 0 50px;
+}
+
+.easy-popup-inner > div[data-easy-popup="link-gen-popup"]:first-child .link-section .button:last-child {
+    color: var(--inverted-cl);
+    margin-top: 20px;
+}
+
+.easy-popup-inner > div[data-easy-popup="link-gen-popup"]:first-child .link-section .button svg {
+    width: 20px;
+    height: 20px;
+
+    margin-right: 10px;
 }
 
 .easy-popup-inner > div[data-easy-popup="link-gen-popup"]:first-child .link-section.please-margin-top {
@@ -403,7 +464,7 @@ input:focus {
 
     font-weight: 500;
 
-    margin-bottom: .30rem;
+    margin-bottom: .40rem;
 }
 
 #qr-code-result {
@@ -411,4 +472,10 @@ input:focus {
     background: var(--primary-color);
     border: 1px solid var(--border-primary);
     border-radius: 5px;
+}
+
+#link-gen-error:has(p) {
+    color: #FF0000;
+
+    margin: 0 0 20px 0;
 }

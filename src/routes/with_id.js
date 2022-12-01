@@ -13,5 +13,5 @@ export default async (req, res) => {
       return res.sendFile(__dirname + "/public/404.html");
     }
 
-    res.redirect(originalLink.url);
+    res.redirect(originalLink.destination);
 }

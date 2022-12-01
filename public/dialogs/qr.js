@@ -4,6 +4,11 @@ const QR_RESULT = document.getElementById("qr-code-result");
 
 var qr = undefined;
 
+const createQRCodePage = (text) => {
+    window.location.hash = "qr-code-popup";
+    qr.makeCode(text);
+}
+
 QR_INPUT.addEventListener("input", (e) => {
     qr.makeCode(e.target.value)
 })

@@ -160,36 +160,76 @@
                 </div>
             </div>
         </div>
+        <div data-easy-popup="created-link-popup"
+            data-easy-popup-mobile="true"
+            data-easy-popup-title="Popup title"
+            data-easy-popup-theme="my-style"
+            data-easy-popup-click-outside-to-close="true">
+            <div class="link-section">
+                Fresh link from the oven
+            </div>
+            <div class="bg-secondary link-section" style="padding: 20px 30px;">
+                <div class="input" style="width: -webkit-fill-available;">
+                    <div id="link-gen-popup-link" style="width: -webkit-fill-available;"></div>
+                </div>
+            </div>
+            <div class="link-section">
+                <div class="button bg-gradient">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                    <span>Copy</span>
+                </div>
+                <div class="button bg-third">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                    <span>Generate QR</span>
+                </div>
+            </div>
+        </div>
         <div data-easy-popup="link-gen-popup"
             data-easy-popup-mobile="true"
             data-easy-popup-title="Popup title"
             data-easy-popup-theme="right-side"
             data-easy-popup-close-button
             data-easy-popup-click-outside-to-close="true">
-            <div class="half-section">
+            <div id="link-gen-form" class="half-section">
                 <div class="link-section center">
                     Generate link
                 </div>
                 <div class="section-line"></div>
                 <div class="link-section please-margin-top">
+                    <div id="link-gen-error"></div>
                     <div class="input-subtitle">Destination URL</div>
                     <div class="input">
                         <div class="icon">
                             <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
                         </div>
-                        <input id="qr-input-url" type="text" placeholder="Enter URL to customize.">
+                        <input id="link-gen-form-input" type="text" placeholder="Enter URL to customize.">
                     </div>
-                    <div style="height: 40px;"></div>
+                    <div style="height: var(--section-space);"></div>
                     <div class="input-subtitle">Custom code for URL</div>
                     <div class="input">
                         <div class="icon">
                             <script>document.write(window.location.hostname)</script>
                         </div>
-                        <input id="qr-input-url" type="text" placeholder="Custom code for the short URL">
+                        <input id="link-gen-form-code" type="text" placeholder="Custom code for the short URL">
                     </div>
                 </div>
                 <div class="section-line" style="margin-top: 50px; margin-bottom: 50px;">
                     <div>Optional</div>
+                </div>
+                <div class="link-section">
+                    <div class="input-subtitle">Password for the link</div>
+                    <div class="input">
+                        <input id="link-gen-form-pwd" type="password" placeholder="*******">
+                    </div>
+                    <div style="height: var(--section-space);"></div>
+                    <div class="input-subtitle">Expiration date</div>
+                    <div class="input">
+                        <input id="link-gen-form-date" type="date" placeholder="Custom code for the short URL">
+                    </div>
+                    <div onclick="createLinkSubmit(event);" class="button bg-gradient">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                        <span>Generate Link</span>
+                    </div>
                 </div>
             </div>
             <div>
@@ -203,7 +243,8 @@
     <script src="/vendor/qrcode/qrcode.min.js"></script>
 
     <script src="./dialogs/qr.js"></script>
+    <script src="./dialogs/link.js"></script>
+
     <script src="./utils/theme.js"></script>
-    <script src="./index.js"></script>
   </body>
 </html>
