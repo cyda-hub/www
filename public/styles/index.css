@@ -222,6 +222,10 @@ main .card div .btn svg {
     overflow: hidden;
 }
 
+.input.error, .input:has(input.error) {
+    border-color: red !important;
+}
+
 .input .icon {
     width: min-content;
     display: flex;
@@ -267,6 +271,12 @@ input:focus {
     transition: .2s;
 
     user-select: none;
+}
+
+button.button {
+    width: 100%;
+    border: none;
+    outline: none;
 }
 
 .button.sqr {

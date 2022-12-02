@@ -1,6 +1,7 @@
 
 import { nanoid } from "nanoid";
 import URL from "../models/urlModel.js";
+import cryptr from "../encription/index.js";
 
 export default (req, res) => {
     const { destination, code, pwd, date } = req.body;
@@ -10,7 +11,7 @@ export default (req, res) => {
 
     id = code || id;
 
-    let newURL = new URL({ destination, id, pwd, date });
+    let newURL = new URL({ destination, id, pwd: cryptr.encrypt(pwd), date });
     try {
         newURL.save();
     } catch (err) {

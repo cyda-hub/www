@@ -1,9 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import path from "path";
+import ejs from "ejs";
 
 import index_route from "./routes/index.js";
 import with_id from "./routes/with_id.js";
+import link_check from "./routes/link_check.js";
 import link from "./routes/link.js";
 
 import { validateURL } from "./utils/index.js";
@@ -23,6 +25,10 @@ export default () => {
     app.get("/", index_route);
     app.get("/:id", with_id);
     app.post("/link", validateURL, link);
+    app.post("/link-pws-check", link_check);
+
+    app.set('views', path.join(__dirname, '/public/pages'));
+    app.engine('html', ejs.renderFile);
 
     connectToDB();
 
