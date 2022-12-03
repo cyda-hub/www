@@ -79,7 +79,9 @@ router.post(
             );
         } catch (err) {
             console.log(err.message);
-            res.status(500).send("Error in Saving");
+            res.status(500).json({
+                errors: ["Error saving (server error)"],
+            });
         }
     }
 );
@@ -108,14 +110,14 @@ router.post(
             });
             if (!user)
                 return res.status(400).json({
-                    message: "User Not Exist",
+                    errors: ["User Not Exist"],
                 });
 
 
             const isMatch = cryptr.decrypt(user.password) == password;
             if (!isMatch)
                 return res.status(400).json({
-                    message: "Incorrect Password !",
+                    errors: ["Incorrect Password!"],
                 });
 
             const payload = {
@@ -139,7 +141,7 @@ router.post(
         } catch (e) {
             console.error(e);
             res.status(500).json({
-                message: "Server Error",
+                errors: ["Server Error"],
             });
         }
     }

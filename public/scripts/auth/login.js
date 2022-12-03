@@ -23,7 +23,7 @@ FORM.addEventListener("submit", async (e) => {
     }).then((response) => {status = response.status; return response.json()});
 
     if (status == 400) {
-        console.log(response.errors)
+        console.log(response)
         ERROR.innerHTML = `<p>${response.errors.join(', ')}</p>`;
     } else if (status == 200) {
         Cookies.set("token", response.token, {

@@ -377,6 +377,14 @@ a {
     color: var(--gradient-end);
 }
 
+.note {
+    margin-top: 20px;
+    color: var(--primary-cl);
+
+    font-weight: 600;
+    font-size: 13px;
+}
+
 /* popups override */
 
 .easy-popup-close-button {

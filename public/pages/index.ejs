@@ -12,7 +12,7 @@
   </head>
   <body>
     <nav>
-        <div class="text-gradient nav-logo">
+        <a href="/" class="text-gradient nav-logo">
             <svg width="25" height="25" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_1_2)">
                 <rect width="150" height="150" fill="#2A2D39"/>
@@ -32,14 +32,18 @@
                 </defs>
             </svg>
             <div>Web utilities</div>
-        </div>
+        </a>
         <div class="links">
             <!-- <div class="link" id="theme-changer">Change theme</div> -->
             <a href="" class="link">About us</a>
             <a href="" class="link">Resources</a>
             <a href="" class="link">Why does this exist?</a>
             <a href="" class="link">Credits</a>
-            <a href="/auth/login" class="button bg-gradient">Authentificate</a>
+            <% if (typeof user === undefined) { %>
+                <a href="/app" class="button bg-gradient">Dashboard</a>
+            <% } else { %>
+                <a href="/auth/login" class="button bg-gradient">Authentificate</a>
+            <% } %>
         </div>
     </nav>
     <header>
