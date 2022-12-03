@@ -1,9 +1,9 @@
-import path from "path";
+import User from "../models/userModel.js";
 
 export default async (req, res) => {
     let user = undefined;
 
-    if (res.user) {
+    if (req.user) {
         user = await User.findById(req.user.id)
     }
 

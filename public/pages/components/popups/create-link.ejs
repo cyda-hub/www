@@ -35,7 +35,7 @@
             <div class="input">
                 <input id="link-gen-form-pwd" type="password" placeholder="*******">
             </div>
-            <% if (typeof user === undefined) { %>
+            <% if (typeof user !== "undefined") { %>
                 <div style="height: var(--section-space);"></div>
                 <div class="input-subtitle">Expiration date</div>
                 <div class="input">

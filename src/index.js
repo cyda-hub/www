@@ -33,13 +33,13 @@ export default () => {
     app.use(cookieParser());
     app.use(bodyParser.json());
 
-    app.get("/", index_route);
+    app.get("/", auth_middleware(false), index_route);
     app.post("/link", validateURL, link);
     app.post("/link-pws-check", link_check);
 
-    app.get("/app", auth_middleware, dashboard);
-    app.get("/app/links", auth_middleware, dashboard_links);
-    app.get("/app/settings", auth_middleware, dashboard_settings);
+    app.get("/app", auth_middleware(), dashboard);
+    app.get("/app/links", auth_middleware(), dashboard_links);
+    app.get("/app/settings", auth_middleware(), dashboard_settings);
 
     app.use("/auth", auth);
     app.get("/:id", with_id);

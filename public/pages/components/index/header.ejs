@@ -4,7 +4,7 @@
 <div>
     <p>With the use of various open source tools,<br /> you can easily create marketing products <br/> and atract users to your business.</p>
     <div class="buttons">
-        <% if (typeof user === undefined) { %>
+        <% if (typeof user !== "undefined") { %>
             <a href="/app" class="button bg-gradient">
                 Enter Dashboard
                 <svg width="15" height="15" style="transition: .1s; margin-left: 10px; margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
