@@ -8,8 +8,6 @@ export default async (req, res) => {
     const {id} = req.params;
 
     const originalLink = await URL.findOne({ id });
-
-    console.log(id)
     if (!originalLink) {
       return res.sendFile(__dirname + "/public/404.html");
     }

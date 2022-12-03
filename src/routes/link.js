@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import URL from "../models/urlModel.js";
 import cryptr from "../encription/index.js";
 
-export default (req, res) => {
+export default async (req, res) => {
     const { destination, code, pwd, date } = req.body;
 
     // Generate a unique id to identify the URL
@@ -11,7 +11,12 @@ export default (req, res) => {
 
     id = code || id;
 
-    let newURL = new URL({ destination, id, pwd: cryptr.encrypt(pwd), date });
+    const originalLink = await URL.findOne({ id });
+    if (originalLink) {
+        return res.json({ message: "Link with that code already exists", type: "failure" });
+    }
+
+    let newURL = new URL({ destination, id, pwd: pwd === "" ? "" : cryptr.encrypt(pwd), expireAt: date });
     try {
         newURL.save();
     } catch (err) {

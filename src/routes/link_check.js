@@ -8,7 +8,6 @@ const __dirname = path.resolve();
 export default async (req, res) => {
     const { id, pwd } = req.body;
 
-
     const link = await URL.findOne({ id });
     if (pwd == cryptr.decrypt(link.pwd)) {
         res.json({
