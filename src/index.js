@@ -8,7 +8,7 @@ import with_id from "./routes/with_id.js";
 import link_check from "./routes/link_check.js";
 import link from "./routes/link.js";
 
-import dashboard from "./routes/app.js";
+import dashboard, { dashboard_links, dashboard_settings } from "./routes/app.js";
 
 import auth from "./routes/auth/auth.js";
 import auth_middleware from "./middleware/auth.js";
@@ -38,6 +38,8 @@ export default () => {
     app.post("/link-pws-check", link_check);
 
     app.get("/app", auth_middleware, dashboard);
+    app.get("/app/links", auth_middleware, dashboard_links);
+    app.get("/app/settings", auth_middleware, dashboard_settings);
 
     app.use("/auth", auth);
     app.get("/:id", with_id);

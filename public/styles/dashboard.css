@@ -38,6 +38,9 @@ nav .nav-link {
 
     user-select: none;
     position: relative;
+
+    text-decoration: none;
+    color: var(--primary-cl);
 }
 
 nav .nav-link.active::after {
