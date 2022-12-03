@@ -1,0 +1,36 @@
+<nav style="border: none;">
+    <div class="text-gradient nav-logo">
+        <svg width="25" height="25" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1_2)">
+            <rect width="150" height="150" fill="#2A2D39"/>
+            <path d="M16.5 75C16.5 42.6913 42.6913 16.5 75 16.5C107.309 16.5 133.5 42.6913 133.5 75V133.5H75C42.6913 133.5 16.5 107.309 16.5 75Z" stroke="#F6DEC9" stroke-width="33"/>
+            <path d="M16.5 75C16.5 42.6913 42.6913 16.5 75 16.5C107.309 16.5 133.5 42.6913 133.5 75V133.5H75C42.6913 133.5 16.5 107.309 16.5 75Z" stroke="url(#paint0_linear_1_2)" stroke-opacity="0.5" stroke-width="33"/>
+            <rect x="117" y="117" width="33" height="33" fill="#2A2D39"/>
+            </g>
+            <defs>
+            <linearGradient id="paint0_linear_1_2" x1="170" y1="129" x2="8.00001" y2="93.5" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#DEC8F5"/>
+            <stop offset="0.578125" stop-color="#CFBAE4" stop-opacity="0.475469"/>
+            <stop offset="1" stop-opacity="0"/>
+            </linearGradient>
+            <clipPath id="clip0_1_2">
+            <rect width="150" height="150" fill="white"/>
+            </clipPath>
+            </defs>
+        </svg>
+        <div>Web utilities</div>
+    </div>
+    <div class="links">
+        <!-- <div class="link" id="theme-changer">Change theme</div> -->
+        <div class="user-button">
+            <%= user.email %>
+        </div>
+    </div>
+</nav>
+<nav>
+    <div class="nav-links-wrapper">
+        <div class="nav-link <% if (dashboardPage === "home"    ) { %> active <% } %>">Dashboard</div>
+        <div class="nav-link <% if (dashboardPage === "links"   ) { %> active <% } %>">My links</div>
+        <div class="nav-link <% if (dashboardPage === "settings") { %> active <% } %>">Settings</div>
+    </div>
+</nav>

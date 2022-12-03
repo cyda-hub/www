@@ -124,8 +124,23 @@ header div:last-child .buttons {
 }
 
 header div:last-child .buttons .button:hover svg {
-
     transform: translateX(5px);
+}
+
+header h1 .underline-text { position: relative; }
+header h1 .underline-text::after {
+    background: -webkit-linear-gradient(var(--gradient-start), var(--gradient-end));
+    width: 100%;
+    content: '';
+
+    position: absolute;
+    transform: translate(-50%, 50%) rotate(-2deg);
+
+    height: 4px;
+    border-radius: 5px;
+
+    bottom: 5px;
+    left: 50%;
 }
 
 /* main */
@@ -234,6 +249,7 @@ main .card div .btn svg {
     height: 100%;
 
     padding: 0 15px;
+    /* border-right: 1px solid var(--border-primary); */
 }
 
 .input .icon svg {
@@ -255,6 +271,16 @@ input {
 input:focus {
     outline: none;
     border: none;
+}
+
+.input-subtitle {
+
+    font-size: 13px;
+    line-height: 1.25rem;
+
+    font-weight: 600;
+
+    margin-bottom: .40rem;
 }
 
 .button {
@@ -346,6 +372,10 @@ button.button {
     width: fit-content;
 }
 
+a {
+    color: var(--gradient-end);
+}
+
 /* popups override */
 
 .easy-popup-close-button {
@@ -423,6 +453,27 @@ button.button {
     justify-content: center;
 }
 
+.easy-popup-inner > div[data-easy-popup="created-link-popup"]:first-child .link-section:first-child {
+    display: block;
+    padding: 20px 30px;
+}
+
+
+.easy-popup-inner > div[data-easy-popup="created-link-popup"]:first-child .link-section:first-child h1 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.easy-popup-inner > div[data-easy-popup="created-link-popup"]:first-child .link-section:first-child p {
+    font-size: .8rem;
+    line-height: 1.15rem;
+
+    opacity: .7;
+}
+
 .easy-popup-inner > div[data-easy-popup="created-link-popup"]:first-child .link-section:last-child {
     border: none;
     padding: 20px 30px;
@@ -490,16 +541,6 @@ button.button {
 
     position: relative;
     display: inline block;
-}
-
-.easy-popup-inner > div[data-easy-popup="link-gen-popup"]:first-child .input-subtitle {
-
-    font-size: .875rem;
-    line-height: 1.25rem;
-
-    font-weight: 500;
-
-    margin-bottom: .40rem;
 }
 
 #qr-code-result {

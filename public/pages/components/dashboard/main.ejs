@@ -1,0 +1,20 @@
+
+<%- include('navigation.ejs'); %>
+
+<main>
+    <%- include(`pages/${page}.ejs`) %>
+</main>
+
+<div class="popups">
+    <%- include('../popups/qr.ejs'); %>
+    <%- include('../popups/create-link.ejs'); %>
+    <%- include('../popups/created-link.ejs'); %>
+</div>
+
+<script src="/vendor/easy-popup/index.js"></script>
+<script src="/vendor/qrcode/qrcode.min.js"></script>
+
+<script src="/dialogs/qr.js"></script>
+<script src="/dialogs/link.js"></script>
+
+<script src="/utils/theme.js"></script>

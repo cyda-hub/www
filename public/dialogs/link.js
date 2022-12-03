@@ -25,25 +25,12 @@ const handleSubmit = async () => {
     if (response.type == "failure") {
         errorDiv.innerHTML = `<p>${response.message}, please try another one!</p>`;
     } else if (response.type == "success") {
-        // shortenedLink.textContent = response.message;
-        console.log(response.message)
-
-        // window.location.hash = "created-link-popup";
         window.EasyPopup.get("created-link-popup").open();
         setLinkToPopup(response.message);
     }
 };
 
-// Clear input field and error message
-const clearFields = () => {
-    destination.value = "";
-    code.value = "";
-    pwd.value = "";
-    date.value = "";
-};
-
 const createLinkSubmit = (e) => {
     e.preventDefault();
     handleSubmit();
-    clearFields();
 };

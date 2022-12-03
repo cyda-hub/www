@@ -1,12 +1,9 @@
 
 const PASSWORD_INPUT = document.getElementById("pwd-input");
-const SUBMIT_BUTTON = document.getElementById("submit-btw");
-
 const ERROR = document.getElementById("error");
 
 const FORM = document.getElementsByTagName("form")[0];
 
-console.log(FORM)
 FORM.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -28,8 +25,3 @@ FORM.addEventListener("submit", async (e) => {
 
     return false;
 });
-
-// SUBMIT_BUTTON.addEventListener("click", (e) => {
-//     e.preventDefault();
-//     // FORM.submit(e);
-// })

@@ -5,17 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>URL Shortener</title>
-    <link rel="stylesheet" href="./styles/index.css" />
-    <link rel="stylesheet" href="./styles/password.css" />
+
+    <link rel="stylesheet" href="/styles/index.css" />
+    <link rel="stylesheet" href="/styles/password.css" />
 
     <link rel="stylesheet" href="/vendor/easy-popup/index.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <script>
-      window.urlID = "<%= id %>";
-    </script>
     <main class="bg-secondary">
         <div>
           <svg width="25" height="25" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -36,24 +34,32 @@
               </clipPath>
               </defs>
           </svg>
-          <p>This link is password protected. Please enter the password to view it.</p>
+          <p>Create a new account. Already have an account? <a href="/auth/login">login</a>.</p>
         </div>
         <form class="bg-third form">
+            <div class="input-subtitle">Email adress</div>
             <div class="input">
-                <!-- <div class="icon">
+                <div class="icon">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
+                </div>
+                <input id="email-input" required type="email" placeholder="Email for your new account">
+            </div>
+            <div class="input-subtitle">Secure password</div>
+            <div class="input">
+                <div class="icon">
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                </div> -->
-                <input id="pwd-input" type="password" placeholder="Password for this link">
+                </div>
+                <input id="pwd-input" type="password" placeholder="Password for the new account">
             </div>
             <button type="submit" id="submit-btw" class="button bg-gradient">
-                <span>Redirect to link</span>
+                <span>Create new account</span>
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
             <div id="error"></div>
         </form>
     </main>
 
-    <script src="./utils/theme.js"></script>
-    <script src="./scripts/link-password.js"></script>
+    <script src="/utils/theme.js"></script>
+    <script src="/scripts/auth/register.js"></script>
   </body>
 </html>
