@@ -297,6 +297,7 @@ input:focus {
     transition: .2s;
 
     user-select: none;
+    text-decoration: none;
 }
 
 button.button {
