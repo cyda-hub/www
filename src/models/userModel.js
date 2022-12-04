@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import URL from "./urlModel.js";
 
 const userModel = new mongoose.Schema({
     email: {

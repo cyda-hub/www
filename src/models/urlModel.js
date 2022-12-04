@@ -18,6 +18,9 @@ const urlSchema = new mongoose.Schema({
           expireAfterSeconds: 60
         }
     },
+    owner: {
+        type: String // user ID
+    }
 }, {timestamps: true});
 
 const URL = mongoose.model("URL", urlSchema);

@@ -29,10 +29,10 @@ FORM.addEventListener("submit", async (e) => {
         Cookies.set("token", response.token, {
             sameSite: "Lax",
             secure: true,
-            httpOnly: true
+            // httpOnly: true
         });
 
-        window.location.href = "/app"
+        window.location.href = "/app";
     }
 
     return false;

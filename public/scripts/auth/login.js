@@ -31,7 +31,7 @@ FORM.addEventListener("submit", async (e) => {
             // httpOnly: true
         });
 
-        window.location.href = "/app"
+        window.location.href = "/app";
     }
 
     return false;

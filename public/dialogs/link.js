@@ -27,9 +27,11 @@ const handleSubmit = async () => {
     } else if (response.type == "success") {
         window.EasyPopup.get("created-link-popup").open();
         setLinkToPopup(response.message);
+
+        // TODO: clear inputs here
+
     }
 };
-
 const createLinkSubmit = (e) => {
     e.preventDefault();
     handleSubmit();
