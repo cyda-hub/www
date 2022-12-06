@@ -1,3 +1,5 @@
+@import url("/styles/dashboard-pages/links.css");
+
 body {
     height: 100vh;
     position: relative;
@@ -65,13 +67,26 @@ main {
 
 
     /* height: 100%; */
-    width: 100%;
-
     position: relative;
 
     margin: 0;
 
     align-items: flex-start;
     justify-content: flex-start;
+
+    padding: 5rem 10rem;
+}
+
+.box {
+    width: 400px;
+    border-radius: 10px;
+
+    flex-direction: column;
+    align-items: center;
+
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+    background: var(--secondary-color);
+    padding: 1rem;
 }
 

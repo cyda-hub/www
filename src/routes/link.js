@@ -1,10 +1,12 @@
 
-import { nanoid } from "nanoid";
+import { customAlphabet } from "nanoid";
 import mongoose from "mongoose";
 
 import URL from "../models/urlModel.js";
 import cryptr from "../encription/index.js";
 import User from "../models/userModel.js";
+
+const genID = customAlphabet("useandom26T198340PX75pxJACKVERYMINDBUSHWOLFGQZbfghjklqvwyzrict", 7);
 
 export default async (req, res) => {
     const { destination, code, pwd, date } = req.body;
@@ -12,7 +14,8 @@ export default async (req, res) => {
     let has_errors = false;
 
     // Generate a unique id to identify the URL
-    let id = nanoid(7);
+    // TODO: check if id is valid
+    let id = genID();
 
     id = code || id;
 

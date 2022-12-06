@@ -1,0 +1,94 @@
+#links,
+#links .box:first-child {
+    width: 100% ;
+}
+
+#links-container.box {
+    padding: 20px 25px;
+}
+
+#links-container .header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 1rem;
+}
+
+#links-container .header-wrapper .button svg {
+    margin-right: 10px;
+
+    width: 20px;
+    height: 20px;
+}
+
+#links-container .header-wrapper .title {
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+#links-container .user-link {
+    background: var(--third-color);
+    padding: 10px;
+    border-radius: 5px;
+
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+#links-container .user-link .link-id {
+    font-weight: 600;
+    font-size: 15px;
+
+    /* margin-bottom: 5px; */
+}
+
+#links-container .user-link .link-dest {
+    font-size: 13px;
+    opacity: .7;
+}
+
+#links-container .user-link .link-dropdown {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#links-container .user-link .link-dropdown:hover {
+    background: var(--secondary-color);
+}
+
+#links-container .user-link .link-dropdown svg  { width: 15px; height: 15px; }
+
+#links-container .user-link div:has(> .link-dropdown) {
+    position: relative;
+}
+
+#links-container .user-link .edit-link {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+#links-container .user-link .edit-link:hover {
+    background: var(--secondary-color);
+}
+
+#links-container .user-link .edit-link svg  { width: 15px; height: 15px; }

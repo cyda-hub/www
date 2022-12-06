@@ -1,4 +1,10 @@
 
+const callInit = (page) => {
+    if (page === "links") {
+        updateLinks();
+    }
+}
+
 const changePage = async (url) => {
     let destination =  url === "" ? "/app" : `/app/${url}`;
     const res = await fetch(destination);
@@ -10,6 +16,7 @@ const changePage = async (url) => {
     document.body = dom.body;
 
     window.history.pushState({}, '', destination);
+    callInit(url);
 }
 
 window.addEventListener("load", async () => {
@@ -20,4 +27,9 @@ window.addEventListener("load", async () => {
 
     let json = await res.json();
     window.user_info = json;
+
+    let url = window.location.pathname;
+    let page = url.substring(url.lastIndexOf('/') + 1)
+
+    callInit(page)
 }) 
