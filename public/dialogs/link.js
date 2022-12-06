@@ -12,6 +12,13 @@ const setLinkToPopup = (link) => {
     linkPopup.innerHTML = `<input type="text" value="${window.location.origin + link}" readonly>`;
 }
 
+const clearFields = () => {
+    destination.value = "";
+    code.value = "";
+    pwd.value = "";
+    date.value = "";
+};
+
 const handleSubmit = async () => {
     console.log(`${window.location.origin}/link`)
     const response = await fetch(`${window.location.origin}/link`, {
@@ -29,9 +36,12 @@ const handleSubmit = async () => {
         setLinkToPopup(response.message);
 
         // TODO: clear inputs here
-
+        clearFields();
     }
 };
+
+
+
 const createLinkSubmit = (e) => {
     e.preventDefault();
     handleSubmit();

@@ -19,5 +19,5 @@ window.addEventListener("load", async () => {
     });
 
     let json = await res.json();
-    console.log(json)
+    window.user_info = json;
 }) 
