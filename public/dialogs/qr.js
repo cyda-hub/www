@@ -5,7 +5,9 @@ const QR_RESULT = document.getElementById("qr-code-result");
 var qr = undefined;
 
 const createQRCodePage = (text) => {
-    window.location.hash = "qr-code-popup";
+    window.EasyPopup.get("qr-code-popup").open();
+
+    QR_INPUT.value = text;
     qr.makeCode(text);
 }
 
