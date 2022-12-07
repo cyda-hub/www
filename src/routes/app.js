@@ -1,7 +1,7 @@
 import URL from "../models/urlModel.js";
 import User from "../models/userModel.js";
 
-
+import cryptr from "../encription/index.js";
 
 export default async (req, res) => {
     const user = await User.findById(req.user.id);
@@ -32,7 +32,7 @@ export const dashboard_info = async (req, res) => {
         info.links.push({
             id: link.id,
             dest: link.destination,
-            pws: link.pwd,
+            pws: link.pwd === "" ? "" : cryptr.decrypt(link.pwd),
             expire: link.expireAt
         })
     }

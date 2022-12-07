@@ -1,6 +1,5 @@
 
 window.addEventListener("click", (e) => {
-    console.log(e.target)
     let dropdowns = document.getElementsByClassName("dropdown");
 
     for (const dropdown of dropdowns) {

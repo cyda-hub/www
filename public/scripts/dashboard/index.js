@@ -20,6 +20,7 @@ const changePage = async (url) => {
 }
 
 window.addEventListener("load", async () => {
+    window.location.hash = "";
     let res = await fetch("/app/_info", {
         method: 'GET',
         credentials: 'include'

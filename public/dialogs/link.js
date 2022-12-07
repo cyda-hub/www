@@ -40,9 +40,28 @@ const handleSubmit = async () => {
     }
 };
 
-
-
 const createLinkSubmit = (e) => {
     e.preventDefault();
     handleSubmit();
 };
+
+window.addEventListener("load", () => {
+    let id = "link-gen-popup";
+
+    EasyPopup.init("#" + id, {
+        id: id, // required
+        hasMobileLayout: false, // toggle mobile layout, false by default
+        theme: 'right-side', // to create multiple themes
+        clickOutsideToClose: true, // true by default
+        keyboard: true, // to close the popup by keyboard (ESC)
+        onOpen: data => {
+        },
+        onClose: data => {
+            // TODO: clear fields
+            console.log(data)
+        },
+    });
+
+    document.getElementById(id).style.display = "flex";
+
+})

@@ -1,3 +1,15 @@
+const editLink = (id) => {
+    const link = window.user_info.links.find(element => element.id === id);
+
+    window.EasyPopup.get("link-gen-popup").open();
+
+    destination.value = link.dest;
+    code.value = link.id;
+    pwd.value = link.pwd;
+    date.value = link.expire;
+
+    // TODO: change button's text
+}
 
 const createElementForLink = (link) => {
     return `
@@ -24,7 +36,7 @@ const createElementForLink = (link) => {
             </div>
         </div>
         <div>
-            <div class="edit-link">
+            <div onclick="editLink('${link.id}')" class="edit-link">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
             </div>
         </div>

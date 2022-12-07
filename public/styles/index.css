@@ -637,15 +637,17 @@ a {
     margin-right: 10px;
 }
 
-.easy-popup-inner > div[data-easy-popup="link-gen-popup"]:first-child {
-    display: flex;
+.easy-popup-inner > #link-gen-popup:first-child {
+    display: none;
 
     padding-left: 0 !important;
     padding-right: 0 !important;
+
+
 }
 
 .easy-popup-inner
-    > div[data-easy-popup="link-gen-popup"]:first-child
+    > #link-gen-popup:first-child
     .link-section {
     --section-space: 40px;
 
@@ -659,7 +661,7 @@ a {
 }
 
 .easy-popup-inner
-    > div[data-easy-popup="link-gen-popup"]:first-child
+    > #link-gen-popup:first-child
     .link-section
     .button:last-child {
     color: var(--inverted-cl);
@@ -667,7 +669,7 @@ a {
 }
 
 .easy-popup-inner
-    > div[data-easy-popup="link-gen-popup"]:first-child
+    > #link-gen-popup:first-child
     .link-section
     .button
     svg {
@@ -678,13 +680,13 @@ a {
 }
 
 .easy-popup-inner
-    > div[data-easy-popup="link-gen-popup"]:first-child
+    > #link-gen-popup:first-child
     .link-section.please-margin-top {
     margin-top: 40px;
 }
 
 .easy-popup-inner
-    > div[data-easy-popup="link-gen-popup"]:first-child
+    > #link-gen-popup:first-child
     .half-section {
     width: 50%;
     border-right: 1px solid var(--border-primary);
