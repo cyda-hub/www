@@ -12,7 +12,8 @@ export default async (req, res) => {
 
     if (originalLink.pwd) {
       return res.render("password.ejs", {
-        id: id
+        id: id,
+        url: req.protocol + "://" + req.headers.host
       });
     }
 

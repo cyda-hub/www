@@ -22,10 +22,10 @@ FORM.addEventListener("submit", async (e) => {
         }),
     }).then((response) => {status = response.status; return response.json()});
 
-    if (status == 400) {
-        console.log(response.errors)
-        ERROR.innerHTML = `<p>${response.errors.join(', ')}</p>`;
-    } else if (status == 200) {
+    // TODO: highlight input with relative error
+    if (status !== 200) {
+        ERROR.innerHTML = `<p>${response.errors.map(x => x.msg).join(', ')}</p>`;
+    } else {
         Cookies.set("token", response.token, {
             sameSite: "Lax",
             secure: true,

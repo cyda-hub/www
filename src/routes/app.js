@@ -27,7 +27,7 @@ export const dashboard_info = async (req, res) => {
         links: []
     }
 
-    let links = await URL.find({ owner: user._id });
+    let links = (await URL.find({ owner: user._id })).reverse();
     for (const link of links) {
         info.links.push({
             id: link.id,

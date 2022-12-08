@@ -8,6 +8,10 @@ import User from "../../models/userModel.js";
 
 const router = express.Router();
 
+const createError = (err) => {
+    return { msg: err }
+}
+
 router.get("/signup", async (req, res) => {
     const token = req.cookies.token;
     if (token) { return res.redirect("/app") };
@@ -46,7 +50,7 @@ router.post(
 
             if (user) {
                 return res.status(400).json({
-                    errors: ["User Already Exists"],
+                    errors: [createError("User Already Exists")],
                 });
             }
 
@@ -80,7 +84,7 @@ router.post(
         } catch (err) {
             console.log(err.message);
             res.status(500).json({
-                errors: ["Error saving (server error)"],
+                errors: [createError("Error saving (server error)")],
             });
         }
     }
@@ -110,14 +114,14 @@ router.post(
             });
             if (!user)
                 return res.status(400).json({
-                    errors: ["User Not Exist"],
+                    errors: [createError("User Not Exist")],
                 });
 
 
             const isMatch = cryptr.decrypt(user.password) == password;
             if (!isMatch)
                 return res.status(400).json({
-                    errors: ["Incorrect Password!"],
+                    errors: [createError("Incorrect Password!")],
                 });
 
             const payload = {
@@ -141,7 +145,7 @@ router.post(
         } catch (e) {
             console.error(e);
             res.status(500).json({
-                errors: ["Server Error"],
+                errors: [createError("Server Error")],
             });
         }
     }
