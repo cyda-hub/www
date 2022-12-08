@@ -1,8 +1,10 @@
 /*!
  * Easy Popup v0.0.5
  * https://github.com/viivue/easy-popup
+ *
+ * edited by Mauro Baladés
  */
-;(function(EasyPopup){
+window.InitEasyPopup = function(EasyPopup){
     /**
      * Private class Popup
      */
@@ -188,7 +190,7 @@
             this.root.classList.add('easy-popup-open');
 
             // prevent scroll > on
-            this.root.style.paddingRight = `${this.getScrollbarWidth()}px`;
+            // this.root.style.paddingRight = `${this.getScrollbarWidth()}px`;
             this.root.style.overflow = `hidden`;
 
             // event
@@ -302,6 +304,6 @@
 
     // Get popup object by ID
     EasyPopup.get = id => window.EasyPopupData.get(id);
+}
 
-
-})(window.EasyPopup = window.EasyPopup || {});
+window.addEventListener("load", () => {window.InitEasyPopup(window.EasyPopup = window.EasyPopup || {})});

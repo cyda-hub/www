@@ -1,7 +1,19 @@
 
-const callInit = (page) => {
+const reloadPoups = () => {
+    window.InitEasyPopup({});
+
+    initLinkDialog();
+    initQRDialog();
+}
+
+const callInit = (page, isNew) => {
     if (page === "links") {
+
         updateLinks();
+
+        if (isNew) {
+            reloadPoups();
+        }
     }
 }
 
@@ -16,7 +28,7 @@ const changePage = async (url) => {
     document.body = dom.body;
 
     window.history.pushState({}, '', destination);
-    callInit(url);
+    callInit(url, true);
 }
 
 window.addEventListener("load", async () => {
@@ -32,5 +44,5 @@ window.addEventListener("load", async () => {
     let url = window.location.pathname;
     let page = url.substring(url.lastIndexOf('/') + 1)
 
-    callInit(page)
+    callInit(page, false)
 }) 

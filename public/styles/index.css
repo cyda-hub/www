@@ -295,6 +295,11 @@ input {
     width: 100%;
 }
 
+input:read-only {
+    opacity: .5;
+    cursor: no-drop;
+}
+
 input:focus {
     outline: none;
     border: none;
@@ -538,6 +543,13 @@ a {
 
 .easy-popup-inner
     > div[data-easy-popup="qr-code-popup"]:first-child
+    .qr-section:nth-last-child(2) {
+    border: none;
+    padding-bottom: 1rem;
+}
+
+.easy-popup-inner
+    > div[data-easy-popup="qr-code-popup"]:first-child
     .qr-section:last-child
     .button
     svg {
@@ -637,8 +649,8 @@ a {
     margin-right: 10px;
 }
 
-.easy-popup-inner > #link-gen-popup:first-child {
-    display: none;
+.easy-popup-inner > div[data-easy-popup="link-gen-popup"]:first-child {
+    display: flex;
 
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -647,7 +659,7 @@ a {
 }
 
 .easy-popup-inner
-    > #link-gen-popup:first-child
+    > div[data-easy-popup="link-gen-popup"]:first-child
     .link-section {
     --section-space: 40px;
 
@@ -661,7 +673,7 @@ a {
 }
 
 .easy-popup-inner
-    > #link-gen-popup:first-child
+    > div[data-easy-popup="link-gen-popup"]:first-child
     .link-section
     .button:last-child {
     color: var(--inverted-cl);
@@ -669,7 +681,7 @@ a {
 }
 
 .easy-popup-inner
-    > #link-gen-popup:first-child
+    > div[data-easy-popup="link-gen-popup"]:first-child
     .link-section
     .button
     svg {
@@ -680,13 +692,13 @@ a {
 }
 
 .easy-popup-inner
-    > #link-gen-popup:first-child
+    > div[data-easy-popup="link-gen-popup"]:first-child
     .link-section.please-margin-top {
     margin-top: 40px;
 }
 
 .easy-popup-inner
-    > #link-gen-popup:first-child
+    > div[data-easy-popup="link-gen-popup"]:first-child
     .half-section {
     width: 50%;
     border-right: 1px solid var(--border-primary);

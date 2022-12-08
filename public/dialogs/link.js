@@ -1,12 +1,13 @@
-const form = document.getElementById("link-gen-form");
+// TODO: rename to avoid conflicts
+var form = document.getElementById("link-gen-form");
 
-const destination = document.getElementById("link-gen-form-input");
-const code = document.getElementById("link-gen-form-code");
-const pwd = document.getElementById("link-gen-form-pwd");
-const date = document.getElementById("link-gen-form-date");
+var destination = document.getElementById("link-gen-form-input");
+var code = document.getElementById("link-gen-form-code");
+var pwd = document.getElementById("link-gen-form-pwd");
+var date = document.getElementById("link-gen-form-date");
 
-const errorDiv = document.getElementById("link-gen-error");
-const linkPopup = document.getElementById("link-gen-popup-link");
+var errorDiv = document.getElementById("link-gen-error");
+var linkPopup = document.getElementById("link-gen-popup-link");
 
 const setLinkToPopup = (link) => {
     linkPopup.innerHTML = `<input type="text" value="${window.location.origin + link}" readonly>`;
@@ -20,7 +21,6 @@ const clearFields = () => {
 };
 
 const handleSubmit = async () => {
-    console.log(`${window.location.origin}/link`)
     const response = await fetch(`${window.location.origin}/link`, {
         headers: {
             "Content-Type": "application/json",
@@ -45,23 +45,27 @@ const createLinkSubmit = (e) => {
     handleSubmit();
 };
 
-window.addEventListener("load", () => {
+const initLinkDialog = () => {
+
+    form = document.getElementById("link-gen-form");
+
+    destination = document.getElementById("link-gen-form-input");
+    code = document.getElementById("link-gen-form-code");
+    pwd = document.getElementById("link-gen-form-pwd");
+    date = document.getElementById("link-gen-form-date");
+
+    errorDiv = document.getElementById("link-gen-error");
+    linkPopup = document.getElementById("link-gen-popup-link");
+
+
     let id = "link-gen-popup";
+    let popup = EasyPopup.get(id);
 
-    EasyPopup.init("#" + id, {
-        id: id, // required
-        hasMobileLayout: false, // toggle mobile layout, false by default
-        theme: 'right-side', // to create multiple themes
-        clickOutsideToClose: true, // true by default
-        keyboard: true, // to close the popup by keyboard (ESC)
-        onOpen: data => {
-        },
-        onClose: data => {
-            // TODO: clear fields
-            console.log(data)
-        },
-    });
+    popup.options.onClose = (data) => {
+        clearFields();
+    }
+}
 
-    document.getElementById(id).style.display = "flex";
-
+window.addEventListener("load", () => {
+    initLinkDialog();
 })

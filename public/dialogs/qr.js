@@ -1,26 +1,41 @@
 
-const QR_INPUT = document.getElementById("qr-input-url");
-const QR_RESULT = document.getElementById("qr-code-result");
+var QR_INPUT = document.getElementById("qr-input-url");
+var QR_RESULT = document.getElementById("qr-code-result");
 
-var qr = undefined;
+var qr;
 
-const createQRCodePage = (text) => {
+const createQRCodePage = (text, readonly = false) => {
     window.EasyPopup.get("qr-code-popup").open();
 
+    QR_INPUT.readOnly = readonly;
     QR_INPUT.value = text;
     qr.makeCode(text);
 }
 
-QR_INPUT.addEventListener("input", (e) => {
-    qr.makeCode(e.target.value)
-})
+const initQRDialog = (load = false) => {
 
-window.addEventListener("load", () => {
-    setTimeout(() => {
+    let id = "qr-code-popup";
+    let popup = EasyPopup.get(id);
+
+    QR_INPUT = document.getElementById("qr-input-url");
+    QR_RESULT = document.getElementById("qr-code-result");
+
+    QR_INPUT.addEventListener("input", (e) => {
+        qr.makeCode(e.target.value)
+    })
+
+    popup.options.onClose = (data) => {
+        QR_INPUT.value = "";
+        QR_INPUT.readOnly = false;
+
+        qr.makeCode(" ")
+    }
+
+    const createQR = () => {
         var pc = getComputedStyle(document.body).getPropertyValue("--primary-color");
         var tc = getComputedStyle(document.body).getPropertyValue("--primary-cl");
-    
-        var qrcode = new QRCode("qr-code-result", {
+
+        qr = new QRCode("qr-code-result", {
             text: " ",
             width: 128,
             height: 128,
@@ -28,7 +43,16 @@ window.addEventListener("load", () => {
             colorLight : pc,
             correctLevel : QRCode.CorrectLevel.H
         });
+    }
 
-        qr = qrcode;
-    }, 0)
+    // I'm as confused as you are
+    if (load) {
+        setTimeout(createQR, 0)
+    } else {
+        createQR()
+    }
+}
+
+window.addEventListener("load", () => {
+    initQRDialog(true);
 })
