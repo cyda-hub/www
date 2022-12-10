@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import URL from "../models/urlModel.js";
 import cryptr from "../encription/index.js";
 import User from "../models/userModel.js";
+import Analytics from "../models/analyticsModel.js";
 
 const genID = customAlphabet("useandom26T198340PX75pxJACKVERYMINDBUSHWOLFGQZbfghjklqvwyzrict", 7);
 
@@ -25,9 +26,12 @@ export default async (req, res) => {
     }
 
     let newURL;
+    let analytics;
     if (req.user) {
         user = await User.findById(req.user.id);
         newURL = new URL({ destination, id, pwd: pwd === "" ? "" : cryptr.encrypt(pwd), expireAt: date, owner: user._id });
+
+        analytics = new Analytics({ linkID: newURL.id, expireAt: date });
     } else {
         newURL = new URL({ destination, id, pwd: pwd === "" ? "" : cryptr.encrypt(pwd), expireAt: date })
     }
@@ -36,6 +40,7 @@ export default async (req, res) => {
 
     try {
         newURL.save();
+        analytics.save();
     } catch (err) {
         res.send("An error was encountered! Please try again.");
     }

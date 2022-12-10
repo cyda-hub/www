@@ -1,6 +1,14 @@
+
+#links {
+    max-width: 56rem;
+    position: relative;
+
+    margin: 0 auto;
+}
+
 #links,
 #links .box:first-child {
-    width: 100% ;
+    width: 100%;
 }
 
 #links-container.box {

@@ -1,4 +1,5 @@
 @import url("/styles/dashboard-pages/links.css");
+@import url("/styles/dashboard-pages/links-view.css");
 
 body {
     height: 100vh;

@@ -432,7 +432,7 @@ a {
 
 .section-dropdown {
     position: absolute;
-    padding: 10px 15px;
+    padding: 5px 10px;
     background-color: var(--secondary-color);
     border: 1px solid var(--border-primary);
 
@@ -464,15 +464,37 @@ a {
     transform: translateY(0);
 }
 
-.dropdown ~ .section-dropdown > * {
-    margin: 5px 0;
+.dropdown ~ .section-dropdown > hr {
+    height: 0.05px;
+    opacity: .1;
+
+    border-radius: 1px;
+    width: 100%;
+
+    background: var(--border-primary);
+
+    margin: 1px;
+    padding: 0;
+}
+
+.dropdown ~ .section-dropdown > *:not(hr) {
+    margin: calc(5px / 2) 0;
     display: flex;
 
     color: var(--primary-cl);
     text-decoration: none;
+
+    transition: .1s;
+    padding: 10px;
+
+    border-radius: 5px;
 }
 
-.dropdown ~ .section-dropdown > * > svg:first-child {
+.dropdown ~ .section-dropdown > *:not(hr):hover {
+    background: var(--third-color);
+}
+
+.dropdown ~ .section-dropdown > *:not(hr) > svg:first-child {
     margin-right: 10px;
 
     width: 20px;

@@ -5,6 +5,7 @@ import cryptr from "../../encription/index.js";
 import { check, validationResult } from "express-validator";
 
 import User from "../../models/userModel.js";
+import { createURL } from "../../utils/index.js";
 
 const router = express.Router();
 
@@ -16,14 +17,18 @@ router.get("/signup", async (req, res) => {
     const token = req.cookies.token;
     if (token) { return res.redirect("/app") };
 
-    return res.render("auth/register.ejs");
+    return res.render("auth/register.ejs", {
+        url: createURL(req)
+    });
 });
 
 router.get("/login", async (req, res) => {
   const token = req.cookies.token;
   if (token) { return res.redirect("/app") };
 
-  return res.render("auth/login.ejs");
+  return res.render("auth/login.ejs", {
+    url: createURL(req)
+  });
 });
 
 router.post(

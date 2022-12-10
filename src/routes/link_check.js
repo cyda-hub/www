@@ -3,8 +3,6 @@ import URL from "../models/urlModel.js";
 import path from "path";
 import cryptr from "../encription/index.js";
 
-const __dirname = path.resolve();
-
 export default async (req, res) => {
     const { id, pwd } = req.body;
 

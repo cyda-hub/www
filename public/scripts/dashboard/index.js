@@ -31,8 +31,8 @@ const changePage = async (url) => {
     callInit(url, true);
 }
 
-window.addEventListener("load", async () => {
-    window.location.hash = "";
+async function recieveUserInfo(cb) {
+
     let res = await fetch("/app/_info", {
         method: 'GET',
         credentials: 'include'
@@ -40,6 +40,16 @@ window.addEventListener("load", async () => {
 
     let json = await res.json();
     window.user_info = json;
+
+    if (typeof cb !== "undefined") {
+        console.log("callback!")
+        cb()
+    }
+}
+
+window.addEventListener("load", async () => {
+    window.location.hash = "";
+    await recieveUserInfo();
 
     let url = window.location.pathname;
     let page = url.substring(url.lastIndexOf('/') + 1)

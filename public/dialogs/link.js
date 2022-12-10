@@ -37,6 +37,10 @@ const handleSubmit = async () => {
 
         // TODO: clear inputs here
         clearFields();
+
+        if (typeof window.updateLinks === "function") {
+            window.recieveUserInfo(window.updateLinks);
+        }
     }
 };
 

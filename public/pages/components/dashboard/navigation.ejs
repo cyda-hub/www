@@ -30,7 +30,7 @@
 <nav>
     <div class="nav-links-wrapper">
         <div onclick="<% if (dashboardPage !== "home") { %> changePage('')<% } %>" class="nav-link <% if (dashboardPage === "home"    ) { %> active <% } %>">Dashboard</div>
-        <div onclick="<% if (dashboardPage !== "links") { %> changePage('links')<% } %>" class="nav-link <% if (dashboardPage === "links"   ) { %> active <% } %>">My links</div>
+        <div onclick="<% if (dashboardPage !== "links") { %> changePage('links')<% } %>" class="nav-link <% if (dashboardPage === "links" || dashboardPage === "link-view"   ) { %> active <% } %>">My links</div>
         <div onclick="<% if (dashboardPage !== "settings") { %> changePage('settings')<% } %>" class="nav-link <% if (dashboardPage === "settings") { %> active <% } %>">Settings</div>
     </div>
 </nav>
