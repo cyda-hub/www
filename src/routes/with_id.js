@@ -2,6 +2,10 @@
 import URL from "../models/urlModel.js";
 import {createURL, nowUnix} from "../utils/index.js";
 import Analytics from "../models/analyticsModel.js";
+import UAParser from "ua-parser-js";
+
+import geoip_lite from "geoip-lite";
+const { lookup } = geoip_lite;
 
 export default async (req, res) => {
     const {id} = req.params;
@@ -11,7 +15,7 @@ export default async (req, res) => {
       return res.redirect("/");
     }
 
-    let analytics = await Analytics.findOne({ linkID: id });
+    let analytics = await Analytics.findOne({ linkID: originalLink._id });
     if (analytics) {
         let now = nowUnix();
 
@@ -20,41 +24,50 @@ export default async (req, res) => {
         let linksClicked = analytics.linksClicked;
         let devices = analytics.devices;
 
+        const addIfExistsOrUpdate = (schema, value) => {
+          schema.push({value, timestamp: now });
+        }
+
         {
           let referer = req.headers.referer;
           if (referer) {
-            referers.push({value: referer, timestamp: now });
+            addIfExistsOrUpdate(referers, referer);
           }
         }
 
-        // {
-        //   let location = req.headers.referer;
-        //   if (location) {
-        //     locations.push({value: referer, timestamp: now });
-        //   }
-        // }
+        {
+          const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+          let location = lookup(ip);
 
-        // {
-        //   let referer = req.headers.referer;
-        //   if (referer) {
-        //     referers.push({value: referer, timestamp: now });
-        //   }
-        // }
+          if (location) {
+            addIfExistsOrUpdate(locations, location.country);
+          }
+        }
 
-        // {
-        //   let referer = req.headers.referer;
-        //   if (referer) {
-        //     referers.push({value: referer, timestamp: now });
-        //   }
-        // }
+        {
+          linksClicked.push({ timestamp: now });
+        }
 
-        analytics.update({
+        {
+          let ua = req.headers['user-agent'];
+          let parsed_ua = new UAParser(ua);
+
+          console.log(parsed_ua.getOS().name ?? "BOT")
+          if (req.device) {
+            addIfExistsOrUpdate(devices, {
+              devices: req.device.type.toUpperCase(),
+              os: parsed_ua.getOS().name ?? "BOT",
+              browsers: parsed_ua.getBrowser().name ?? "BOT"
+            });
+          }
+        }
+
+        analytics.updateOne({
           referers,
           locations,
           linksClicked,
           devices,
         }).exec();
-      // TODO: fill analytics
     }
 
     if (originalLink.pwd) {

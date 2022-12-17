@@ -31,7 +31,7 @@ export default async (req, res) => {
         user = await User.findById(req.user.id);
         newURL = new URL({ destination, id, pwd: pwd === "" ? "" : cryptr.encrypt(pwd), expireAt: date, owner: user._id });
 
-        analytics = new Analytics({ linkID: newURL.id, expireAt: date });
+        analytics = new Analytics({ linkID: newURL._id, expireAt: date });
     } else {
         newURL = new URL({ destination, id, pwd: pwd === "" ? "" : cryptr.encrypt(pwd), expireAt: date })
     }

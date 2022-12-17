@@ -19,7 +19,7 @@
 
 #link-view .double-box {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
 
     justify-content: space-between;
     position: relative;
@@ -49,8 +49,92 @@
     margin-bottom: 10px;
 }
 
-
 #link-view .title-space .title {
     font-size: 13px;
     font-weight: bold;
+
+    display: flex;
+    align-items: center;
+}
+
+#link-view .box .box-row {
+    padding: 10px;
+    margin: 5px 0;
+
+    border-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    transition: .1s;
+}
+
+#link-view .box .box-row:last-child {
+    margin: 0;
+}
+
+#link-view .box .box-row:hover {
+    background: var(--third-color);
+}
+
+/* devices box */
+
+#link-view .box #devices .box-row > div {
+    font-weight: 600;
+    font-size: 14px;
+
+    display: flex;
+    align-items: center;
+}
+
+#link-view .box #devices .box-row > div svg {
+    width: 15px;
+    height: 15px;
+
+    margin-right: 10px;
+}
+
+#link-view .box .devices-selection {
+    display: flex;
+    align-items: center;
+}
+
+#link-view .box .devices-selection > div {
+    padding: 5px 7px;
+    border-radius: 5px;
+
+    transition: .1s;
+    margin: 0 2px;
+
+    cursor: pointer;
+}
+
+#link-view .box .devices-selection > div.active,
+#link-view .box .devices-selection > div:hover {
+    background: var(--third-color);
+}
+
+#link-view .box #devices + .title-space:last-child {
+    /* border-top: 1px solid var(--border-primary); */
+    border-bottom: none;
+
+    margin: 15px 0 0 0;
+    padding: 0;
+}
+
+#link-view .box #devices + .title-space:last-child label {
+    margin-left: 5px;
+}
+
+/* referers box */
+
+#link-view .box #referers .box-row > div {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#link-view .box:has(#referers) .title-space {
+    margin-top: 5px;
+    padding-bottom: 15px;
 }

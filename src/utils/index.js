@@ -20,4 +20,4 @@ export const createURL = (req) => {
 }
 
 
-export const nowUnix = new Date().valueOf()
+export const nowUnix = () => (new Date()).valueOf()

@@ -7,6 +7,15 @@ const valueSchema = new mongoose.Schema({
     }
 })
 
+const devicesSchema = new mongoose.Schema({
+  devices: String,
+  os: String,
+  browsers: String,
+  timestamp: {
+    type: Number
+  }
+})
+
 const schema = new mongoose.Schema({
     linkID: {
         required: true,
@@ -22,7 +31,7 @@ const schema = new mongoose.Schema({
       type: [valueSchema.schema],
     },
     devices: {
-      type: [valueSchema.schema],
+      type: [devicesSchema.schema],
     },
     expireAt: {
         type: Date,

@@ -23,3 +23,11 @@
 <script src="/scripts/dashboard/index.js"></script>
 
 <script src="/scripts/index.js"></script>
+
+<% if (dashboardPage === "link-view") { %>
+    <script>window.link_analytics = {
+        devices: <%- JSON.stringify(analytics.devices) %>,
+        referers: <%- JSON.stringify(analytics.referers) %>,
+    }</script>
+    <script src="/scripts/dashboard/link-view.js"></script>
+<% } %>

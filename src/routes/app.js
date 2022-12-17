@@ -42,10 +42,10 @@ export const dashboard_link = async (req, res) => {
 
     const originalLink = await URL.findOne({ id });
     if ((!originalLink) || (originalLink.owner != user._id)) {
-      return res.redirect("/");
+      return res.redirect("/app/links");
     }
 
-    const analytics = await Analytics.findOne({ linkID: id });
+    const analytics = await Analytics.findOne({ linkID: originalLink._id });
     return res.render("dashboard/index.ejs", {
         user,
         url: createURL(req),

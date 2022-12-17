@@ -19,6 +19,8 @@ import { connectToDB } from "./db/connect.js";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 
+import device from "express-device";
+
 const __dirname = path.resolve();
 
 dotenv.config();
@@ -29,6 +31,7 @@ export default () => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     app.use(express.static(__dirname + "/public")); // This line helps us server static files in the public folder. Here we'll write our CSS and browser javascript code
+    app.use(device.capture());
 
     app.use(cookieParser());
     app.use(bodyParser.json());
@@ -46,12 +49,13 @@ export default () => {
     app.use("/auth", auth);
     app.get("/:id", with_id);
 
+    app.set('trust proxy',true);
     app.set('views', path.join(__dirname, '/public/pages'));
     app.engine('html', ejs.renderFile);
 
     connectToDB();
 
-    app.listen(8000, () => {
+    app.listen(8000, '0.0.0.0', () => {
         console.log("App listening on host http://localhost:8000 and on port 8000");
     });
 }
