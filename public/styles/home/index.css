@@ -1,0 +1,29 @@
+
+main .pill {
+    padding: 8px 16px;
+    border-radius: 50px;
+
+    width: fit-content;
+
+    font-weight: 600;
+    font-size: 13px;
+
+    user-select: none;
+
+    background: var(--third-color);
+    border: 1px solid var(--border-primary);
+}
+
+main .title {
+    font-size: 2rem;
+    font-weight: 600;
+
+    margin-top: 20px;
+}
+
+main .section-desc {
+    font-size: 15px;
+    max-width: 40%;
+
+    margin-top: 30px;
+}

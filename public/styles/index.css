@@ -1,5 +1,6 @@
+
 :root {
-    /* background: rgb(168, 168, 168); */
+    --body-inner-padding: 10%;
 }
 
 html,
@@ -16,17 +17,16 @@ body,
     font-feature-settings: normal;
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
     background: var(--primary-color);
 }
 
 nav {
-    padding: 25px 100px;
 
-    /* box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); */
-    border-bottom: 1px solid var(--border-primary);
-
-    background: var(--secondary-color);
 
     display: flex;
     justify-content: space-between;
@@ -112,10 +112,11 @@ nav .links .button {
 header {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
 
-    padding: 0 10%;
-    margin: 200px 0;
+    padding: 0 var(--body-inner-padding);
+    height: calc(100vh - 90px);
+
 }
 
 header h1 {
@@ -163,92 +164,16 @@ header h1 .underline-text::after {
     left: 50%;
 }
 
-/* main */
-
-main {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-
-    margin: 0 10%;
-}
-
-main .card {
-    padding: calc(20px - 1px);
-    border-radius: 10px;
-    border: 2px solid var(--border-primary);
-
-    background: var(--secondary-color);
-
-    display: flex;
-    max-width: 300px;
-
-    transition: 0.2s;
-
-    position: relative;
-    /* box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05); */
-}
-
-main .card:hover {
-    border: 2px solid transparent;
-    background-clip: padding-box;
-}
-
-main .card:hover::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    z-index: -1;
-    margin: -2px;
-    border-radius: inherit;
-    background: linear-gradient(
-        to right,
-        var(--gradient-start),
-        var(--gradient-end)
-    );
-}
-
-main .card svg.icon {
-    width: 30px;
-    height: 30px;
-
-    color: var(--primary-cl);
-}
-
-main .card > div:nth-child(2) {
-    margin-left: 20px;
-}
-
-main .card div .title {
-    color: var(--primary-cl);
-    margin-bottom: 5px;
-}
-
-main .card div .desc {
-    color: var(--primary-cl);
-    opacity: 0.6;
-
-    font-size: 15px;
-}
-
-main .card div .btn {
-    color: var(--primary-cl);
-    opacity: 0.6;
-
-    margin-top: 50px;
-    width: min-content;
-}
-
-main .card div .btn svg {
-    width: 20px;
-    height: 20px;
-}
-
 /* COMPONENTS */
+
+.body-section {
+    padding: var(--body-inner-padding);
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .input {
     background: var(--third-color);
@@ -325,7 +250,7 @@ input:focus {
     justify-content: center;
 
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.1s;
 
     user-select: none;
     text-decoration: none;
@@ -343,17 +268,29 @@ button.button {
 
 .button:hover {
     transform: translateY(-1px);
+    transition: .1s !important;
+}
+
+.button:active {
+    transform: scale(0.90) translateY(-1px) !important;
+}
+
+.bg-primary {
+    background: var(--primary-color) !important;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    color: var(--primary-cl);
+    opacity: 0.8;
 }
 
 .bg-secondary {
-    background: var(--secondary-color);
+    background: var(--secondary-color) !important;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     color: var(--primary-cl);
     opacity: 0.8;
 }
 
 .bg-third {
-    background: var(--third-color);
+    background: var(--third-color) !important;
     /* box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); */
     color: var(--primary-cl);
     opacity: 0.8;
@@ -378,6 +315,10 @@ button.button {
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.border-primary {
+    border: 1px solid var(--border-primary);
 }
 
 .section-line {
@@ -485,9 +426,13 @@ a {
     text-decoration: none;
 
     transition: .1s;
-    padding: 10px;
+    padding: .6rem;
 
     border-radius: 5px;
+    align-items: center;
+
+    font-weight: 600;
+    font-size: 13px;
 }
 
 .dropdown ~ .section-dropdown > *:not(hr):hover {
@@ -497,8 +442,8 @@ a {
 .dropdown ~ .section-dropdown > *:not(hr) > svg:first-child {
     margin-right: 10px;
 
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
 }
 
 /* popups override */
@@ -746,3 +691,19 @@ a {
     font-weight: 600;
     font-size: 13px;
 }
+
+/* box component */
+
+.box {
+    width: 400px;
+    border-radius: 10px;
+
+    flex-direction: column;
+    align-items: center;
+
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+    background: var(--secondary-color);
+    padding: 1rem;
+}
+

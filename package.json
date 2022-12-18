@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "build:css": "postcss styles/index.css -o public/styles/index.css"
   },
   "type": "module",
   "dependencies": {

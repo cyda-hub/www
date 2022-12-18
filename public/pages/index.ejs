@@ -9,12 +9,15 @@
     <meta name="theme-color" content="#f6dec9" />
 
     <link rel="stylesheet" href="./styles/index.css" />
+    <link rel="stylesheet" href="./styles/home/index.css" />
+
     <link rel="stylesheet" href="/vendor/easy-popup/index.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <nav>
+    <nav class="flex  fa just py-[25px] px-[100px] border-b border-[var(--border-primary)] bg-[var(--secondary-color)]">
         <a href="/" class="text-gradient nav-logo">
             <svg width="25" height="25" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_1_2)">
@@ -38,10 +41,10 @@
         </a>
         <div class="links">
             <!-- <div class="link" id="theme-changer">Change theme</div> -->
-            <a href="" class="link">About us</a>
-            <a href="" class="link">Resources</a>
-            <a href="" class="link">Why does this exist?</a>
-            <a href="" class="link">Credits</a>
+            <a data-aos="fade-down" href="" class="link">About us</a>
+            <a data-aos="fade-down" data-aos-delay="100" href="" class="link">Resources</a>
+            <a data-aos="fade-down" data-aos-delay="200" href="" class="link">Why does this exist?</a>
+            <a data-aos="fade-down" data-aos-delay="300" href="" class="link">Credits</a>
             <% if (typeof user !== "undefined") { %>
                 <a href="/app" class="button bg-gradient">Dashboard</a>
             <% } else { %>
@@ -53,7 +56,7 @@
         <%- include('components/index/header.ejs'); %>
     </header>
     <main>
-        <%- include('components/index/cards.ejs'); %>
+        <%- include('components/index/body.ejs'); %>
     </main>
 
     <div class="popups">
@@ -70,5 +73,12 @@
 
     <script src="./utils/theme.js"></script>
     <script src="/scripts/index.js"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>

@@ -8,6 +8,10 @@
 }
 
 #link-view .box {
+    min-height: 500px;
+}
+
+#link-view .box {
     margin-bottom: 2rem;
     /* border: 1px solid var(--border-primary); */
 }
@@ -108,11 +112,16 @@
     margin: 0 2px;
 
     cursor: pointer;
+    user-select: none;
 }
 
 #link-view .box .devices-selection > div.active,
 #link-view .box .devices-selection > div:hover {
     background: var(--third-color);
+}
+
+#link-view .box .devices-selection > div:active {
+    transform: scale(0.9);
 }
 
 #link-view .box #devices + .title-space:last-child {

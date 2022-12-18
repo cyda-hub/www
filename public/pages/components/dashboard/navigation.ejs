@@ -22,8 +22,19 @@
     </a>
     <div class="links">
         <!-- <div class="link" id="theme-changer">Change theme</div> -->
-        <div class="user-button">
-            <%= user.email %>
+        <div style="position: relative;">
+            <input class="dropdown" type="checkbox" id="dropdown-link-${link.id}" name="dropdown"/>
+            <label style="display: block;" class="link-dropdown for-dropdown" for="dropdown-link-${link.id}">
+                <div class="user-button">
+                    <%= user.email %>
+                </div>
+            </label>
+            <div style="margin-top: 10px;" class="section-dropdown">
+                <a href="#" onclick="logoutUser()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    <span>Logout</span>
+                </a>
+            </div>
         </div>
     </div>
 </nav>
