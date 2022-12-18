@@ -50,7 +50,7 @@ export default () => {
     app.get("/:id", with_id);
 
     app.set('trust proxy',true);
-    app.set('views', path.join(__dirname, '/public/pages'));
+    app.set('views', path.join(__dirname, '/pages'));
     app.engine('html', ejs.renderFile);
 
     connectToDB();

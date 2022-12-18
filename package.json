@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "nodemon index.js",
-    "build:css": "postcss styles/index.css -o public/styles/index.css"
+    "watch:css": "npx tailwindcss -i ./tailwindcss/index.css -o ./public/styles/index.css --watch "
   },
   "type": "module",
   "dependencies": {
