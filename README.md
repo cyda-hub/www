@@ -1,2 +1,2 @@
 # www
-main website for WebU
+main website for Cyda

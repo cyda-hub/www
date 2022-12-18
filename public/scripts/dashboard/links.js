@@ -64,7 +64,6 @@ function updateLinks() {
         LINKS_CONTAINER.removeChild(LINKS_CONTAINER.firstChild);
     }
 
-    console.log(window.user_info)
     for (const link of window.user_info.links) {
         LINKS_CONTAINER.innerHTML += createElementForLink(link);
     }
