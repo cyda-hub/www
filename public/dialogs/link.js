@@ -40,6 +40,7 @@ const handleSubmit = async () => {
 
         if (typeof window.updateLinks === "function") {
             window.recieveUserInfo(window.updateLinks);
+            jsConfetti.addConfetti();
         }
     }
 };

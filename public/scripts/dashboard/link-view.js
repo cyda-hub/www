@@ -79,7 +79,6 @@ function updateDevices (page = "devices") {
     const unified = unifyGroupsWithKey(elements, page);
 
     let total = 0;
-    console.log(unified)
 
     // get the amount
     for (const element of unified) {
@@ -93,7 +92,6 @@ function updateDevices (page = "devices") {
     }
 
     let sorted = unified.sort((a,b) => b.amount - a.amount);
-    console.log(sorted)
     for (const element of sorted) {
         let val = element.value;
         let percentage = (element.amount / total) * 100
@@ -147,16 +145,33 @@ function updateReferers () {
     const elements = filterByDate(window.link_analytics.referers, date_scope);
     const unified = unifyGroups(elements);
 
+    let total = 0;
     for (const element of unified) {
+        let val = element.value;
+
+        if (val === "BOT" && (!analytics_allow_bots)) {
+            continue;
+        }
+
+        total += element.amount;
+    }
+
+    let sorted = unified.sort((a,b) => b.amount - a.amount);
+    for (const element of sorted) {
+        let val = element.value;
+        let percentage = (element.amount / total) * 100;
+
         REFERERS_CONTAINER.innerHTML += `
-            <div class="box-row">
-                <div>
-                    ${element.value}
-                </div>
-                <div>
-                    ${element.amount}
-                </div>
+        <div class="box-row">
+            <div style="width: ${percentage}%;" class="z-0 h-full absolute rounded bg-yellow-100 opacity-40">
             </div>
+            <div class="z-10 px-3">
+                <div>${val.charAt(0) + val.toLowerCase().slice(1)}</div>
+            </div>
+            <div class="z-10 px-3 p-2">
+                ${element.amount}
+            </div>
+        </div>
         `;
     }
 }

@@ -67,8 +67,7 @@
     <script src="/vendor/easy-popup/index.js"></script>
     <script src="/vendor/qrcode/qrcode.min.js"></script>
 
-    <script src="./dialogs/qr.js"></script>
-    <script src="./dialogs/link.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
 
     <script src="./utils/theme.js"></script>
     <script src="/scripts/index.js"></script>
@@ -76,7 +75,13 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
+        window.jsConfetti = new JSConfetti()
         AOS.init();
     </script>
+
+
+    <script src="./dialogs/qr.js"></script>
+    <script src="./dialogs/link.js"></script>
+
 </body>
 </html>

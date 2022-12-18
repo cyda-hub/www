@@ -29,10 +29,8 @@ export default async (req, res) => {
         }
 
         {
-          let referer = req.headers.referer;
-          if (referer) {
-            addIfExistsOrUpdate(referers, referer);
-          }
+          let referer = req.get('Referrer');
+          addIfExistsOrUpdate(referers, referer ?? "None / Unknown");
         }
 
         {
@@ -52,7 +50,6 @@ export default async (req, res) => {
           let ua = req.headers['user-agent'];
           let parsed_ua = new UAParser(ua);
 
-          console.log(parsed_ua.getOS().name ?? "BOT")
           if (req.device) {
             addIfExistsOrUpdate(devices, {
               devices: req.device.type.toUpperCase(),

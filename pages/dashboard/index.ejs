@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    
+
     <link rel="stylesheet" href="/styles/index.css" />
     <link rel="stylesheet" href="/styles/dashboard.css" />
 
@@ -19,5 +19,15 @@
   </body>
 
   <script type="module" src="/vendor/js-cookie/js.cookie.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+      window.jsConfetti = new JSConfetti()
+      AOS.init();
+  </script>
+
   <script src="/scripts/auth/logout.js"></script>
 </html>
