@@ -62,7 +62,6 @@
 }
 
 #link-view .box .box-row {
-    padding: 10px;
     margin: 5px 0;
 
     border-radius: 5px;
@@ -72,14 +71,11 @@
     justify-content: space-between;
 
     transition: .1s;
+    position: relative;
 }
 
 #link-view .box .box-row:last-child {
     margin: 0;
-}
-
-#link-view .box .box-row:hover {
-    background: var(--third-color);
 }
 
 /* devices box */

@@ -5,8 +5,8 @@ const editLink = (id) => {
 
     destination.value = link.dest;
     code.value = link.id;
-    pwd.value = link.pwd;
-    date.value = link.expire;
+    pwd.value = link.pwd ?? "";
+    date.value = link.expire ?? "";
 
     // TODO: change button's text
 }

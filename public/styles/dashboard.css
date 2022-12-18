@@ -6,27 +6,6 @@ body {
     position: relative;
 }
 
-nav .links .user-button {
-    border: 1px solid var(--border-primary);
-    padding: 10px 15px;
-
-    user-select: none;
-    font-weight: 600;
-
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-nav:has(.nav-links-wrapper) {
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-nav .nav-links-wrapper {
-    display: flex;
-    align-items: center;
-}
-
 nav .nav-link {
     --nav-link-padding: 10px;
 
@@ -65,9 +44,6 @@ nav .nav-link:hover {
 
 main {
     display: flex;
-
-
-    /* height: 100%; */
     position: relative;
 
     margin: 0;

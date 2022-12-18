@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="double-box">
-        <div class="box">
+        <div class="box relative overflow-hidden">
             <div class="title-space">
                 <div class="title">Devices and enviroments</div>
                 <div class="title devices-selection">
@@ -21,8 +21,8 @@
                     <div onclick="onDeviceSelectionClick(event);">OS</div>
                 </div>
             </div>
-            <div id="devices"></div>
-            <div class="title-space">
+            <div id="devices" class="overflow-auto"></div>
+            <div class="title-space absolute bottom-4 left-2">
                 <div class="title">
                     <input onchange="onDevicesAllowBotChange(event)" id="allow-bots-for-devices" style="width: min-content; margin: 0 10px;" type="checkbox" name="" id="">
                     <label for="allow-bots-for-devices">Allow bots</label>

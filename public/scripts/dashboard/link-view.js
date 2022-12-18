@@ -77,12 +77,27 @@ function updateDevices (page = "devices") {
 
     const elements = filterByDate(window.link_analytics.devices, date_scope);
     const unified = unifyGroupsWithKey(elements, page);
+
+    let total = 0;
     console.log(unified)
 
+    // get the amount
     for (const element of unified) {
         let val = element.value;
 
-        console.log(analytics_allow_bots)
+        if (val === "BOT" && (!analytics_allow_bots)) {
+            continue;
+        }
+
+        total += element.amount;
+    }
+
+    let sorted = unified.sort((a,b) => b.amount - a.amount);
+    console.log(sorted)
+    for (const element of sorted) {
+        let val = element.value;
+        let percentage = (element.amount / total) * 100
+
         if (val === "BOT" && (!analytics_allow_bots)) {
             continue;
         }
@@ -111,11 +126,13 @@ function updateDevices (page = "devices") {
 
         DEVICES_CONTAINER.innerHTML += `
             <div class="box-row">
-                <div>
+                <div style="width: ${percentage}%;" class="z-0 h-full absolute rounded bg-blue-400 opacity-40">
+                </div>
+                <div class="z-10 px-3">
                     ${icon}
                     <div>${val.charAt(0) + val.toLowerCase().slice(1)}</div>
                 </div>
-                <div>
+                <div class="z-10 px-3 p-2">
                     ${element.amount}
                 </div>
             </div>
