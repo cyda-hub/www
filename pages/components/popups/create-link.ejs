@@ -42,7 +42,7 @@
                     <input id="link-gen-form-date" type="datetime-local" step="60" min="<%= new Date().toISOString().split('T')[0] %>" placeholder="Custom code for the short URL">
                 </div>
             <% } else { %>
-                <div class="note">note: public links will be automatically deleted after 30 days. You can <a href="/auth/signup">create an account</a> to keep them for ever.</div>
+                <div class="mt-5 text-[var(--primary-cl)] font-semibold text-xs">note: public links will be automatically deleted after 30 days. You can <a href="/auth/signup">create an account</a> to keep them for ever.</div>
                 <input id="link-gen-form-date" type="datetime-local" style="display: none;" value="<%= (new Date(new Date().setDate(new Date().getDate() + 30))).toISOString().split('T')[0] %>" placeholder="Custom code for the short URL">
             <% } %>
             <div onclick="createLinkSubmit(event);" class="button bg-gradient">
