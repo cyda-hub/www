@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
-    <nav class="absolute w-full flex justify-between items-center py-[25px] px-[100px] border-solid border-0 border-b shadow tw-border-solid border-[var(--border-primary)] bg-[var(--secondary-color)]">
+    <nav class="absolute w-full flex justify-between items-center py-[25px] px-[100px] border-solid border-0 border-b shadow border-[var(--border-primary)] bg-[var(--secondary-color)]">
         <a href="/" class="text-gradient text-xl font-semibold flex items-center">
             <svg class="mr-4" width="25" height="25" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_1_2)">
@@ -51,7 +51,7 @@
             <% } %>
         </div>
     </nav>
-    <header class="flex items-center justify-between px-[var(--body-inner-padding)] h-screen">
+    <header class="border-solid border-0 border-b shadow border-[var(--border-primary)] flex items-center justify-between px-[var(--body-inner-padding)] h-screen">
         <%- include('components/index/header.ejs'); %>
     </header>
     <main>
@@ -60,6 +60,7 @@
 
     <div class="popups">
         <%- include('components/popups/qr.ejs'); %>
+        <%- include('components/popups/share-link.ejs'); %>
         <%- include('components/popups/create-link.ejs'); %>
         <%- include('components/popups/created-link.ejs'); %>
     </div>
@@ -74,9 +75,13 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+
     <script>
         window.jsConfetti = new JSConfetti()
         AOS.init();
+        tippy('[data-tippy-content]');
     </script>
 
 

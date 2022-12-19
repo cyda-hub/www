@@ -1,0 +1,53 @@
+<div data-easy-popup="share-link-popup"
+    data-easy-popup-mobile="true"
+    data-easy-popup-title="Popup title"
+    data-easy-popup-theme="my-style"
+    data-easy-popup-click-outside-to-close="true">
+    <div class="bg-[var(--primary-color)] w-full border-solid border-0 border-b border-[var(--border-primary)] p-5">
+        <div class="text-md font-semibold">Share your link</div>
+        <div class="text-xs opacity-70 mt-1">Expose this link to the world! Note that<br />the link will not work after expiration!</div>
+    </div>
+    <div class="bg-[var(--secondary-color)] w-full border-solid border-0 border-b border-[var(--border-primary)] p-5">
+        <div class="text-sm mb-2 font-semibold">Your short link</div>
+        <div class="input">
+            <div class="icon">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+            </div>
+            <input id="share-link-url-preview" type="text" readonly>
+            <div title="copy short url" onclick="copySharedURL(event)" style="transform: translateY(-50%);" class="transition-[.1s] absolute top-1/2 right-2 text-xs font-semibold p-2 bg-[var(--primary-color)] h-2/3 rounded border-primary flex items-center cursor-pointer">
+                <svg class="pointer-events-none w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+            </div>
+        </div>
+
+
+        <div class="text-xs mb-2 mt-4 font-semibold">Quick share options</div>
+        <div class="mt-2 flex">
+            <div class="hover:shadow hover:bg-[var(--third-color)] rounded mr-1 cursor-pointer w-8 h-8 flex items-center justify-center border-solid border border-[var(--border-primary)] relative">
+                <i class="fa-brands fa-facebook text-xs"></i>
+            </div>
+            <div class="hover:shadow hover:bg-[var(--third-color)] rounded mx-1 cursor-pointer w-8 h-8 flex items-center justify-center border-solid border border-[var(--border-primary)] relative">
+                <i class="fa-brands fa-twitter text-xs"></i>
+            </div>
+            <div class="hover:shadow hover:bg-[var(--third-color)] rounded mx-1 cursor-pointer w-8 h-8 flex items-center justify-center border-solid border border-[var(--border-primary)] relative">
+                <i class="fa-solid fa-envelope text-xs"></i>
+            </div>
+            <div class="hover:shadow hover:bg-[var(--third-color)] rounded mx-1 cursor-pointer w-8 h-8 flex items-center justify-center border-solid border border-[var(--border-primary)] relative">
+                <i class="fa-brands fa-linkedin text-xs"></i>
+            </div>
+            <div class="hover:shadow hover:bg-[var(--third-color)] rounded mx-1 cursor-pointer w-8 h-8 flex items-center justify-center border-solid border border-[var(--border-primary)] relative">
+                <i class="fa-brands fa-pinterest text-xs"></i>
+            </div>
+        </div>
+    </div>
+    <div class="bg-[var(--primary-color)] w-full flex items-center justify-between py-4 px-5">
+        <div class="flex items-center">
+            <div onclick="createQRCodePage(getLinkShareURL());" class="text-sm flex font-semibold mr-4 items-center cursor-pointer">
+                <i class="text-xs mr-2 fa-solid fa-qrcode"></i>
+                <span>Generate QR</span>
+            </div>
+        </div>
+        <div onclick="window.EasyPopup.get('share-link-popup').close()" class="button bg-gradient" style="padding: 0.6rem 30px;">
+            Done
+        </div>
+    </div>
+</div>

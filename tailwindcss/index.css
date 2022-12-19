@@ -374,6 +374,17 @@ a {
     color: var(--primary-cl);
 }
 
+.easy-popup-inner:has(div[data-easy-popup="share-link-popup"]) {
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.easy-popup-inner > div[data-easy-popup="share-link-popup"]:first-child {
+    padding: 0 !important;
+    /* width: min-content; */
+    border: 1px solid var(--border-primary);
+}
+
 .easy-popup-inner:has(div[data-easy-popup="qr-code-popup"]) {
     max-width: 400px;
     margin: 0 auto;
@@ -614,4 +625,10 @@ a {
 
     background: var(--secondary-color);
     padding: 1rem;
+
+    overflow: hidden;
+}
+
+.box.p-0 {
+    padding: 0;
 }

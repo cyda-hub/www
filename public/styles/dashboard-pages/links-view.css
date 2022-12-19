@@ -46,6 +46,7 @@
 #link-view .title-space {
     display: flex;
     justify-content: space-between;
+    width: 100%;
 
     border-bottom: 1px solid var(--border-primary);
 
@@ -142,4 +143,22 @@
 #link-view .box:has(#referers) .title-space {
     margin-top: 5px;
     padding-bottom: 15px;
+}
+
+/* common styles */
+
+#link-view .box:has(#devices), #link-view .box:has(#referers) {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+}
+
+#link-view .box #devices, #link-view .box #referers {
+    width: 100%;
+
+    display: flex;
+    flex-flow: column;
+
+    position: relative;
+    height: 100%;
 }

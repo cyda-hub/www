@@ -39,11 +39,62 @@ const handleSubmit = async () => {
         clearFields();
 
         if (typeof window.updateLinks === "function") {
-            window.recieveUserInfo(window.updateLinks);
             jsConfetti.addConfetti();
+            window.recieveUserInfo(window.updateLinks);
         }
     }
 };
+
+function shareLink(id) {
+    let url = `${window.location.origin}/${id}`;
+
+    document.getElementById("share-link-url-preview").value = url;
+    window.EasyPopup.get("share-link-popup").open();
+}
+
+function getLinkShareURL() {
+    return document.getElementById("share-link-url-preview").value;
+}
+
+function copySharedURL(e) {
+    let elem = document.getElementById("share-link-url-preview")
+
+    var textArea = document.createElement("textarea");
+    textArea.value = elem.value;
+    
+    // Avoid scrolling to bottom
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+
+        var successful = document.execCommand('copy');
+        if (successful) {
+            e.target.style.borderColor = "green";
+
+            setTimeout(() => {
+                e.target.style.borderColor = "var(--border-primary)";
+            }, 1000)
+
+            document.body.removeChild(textArea);
+            return;
+        }
+    } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+    }
+
+    document.body.removeChild(textArea);
+    e.target.style.borderColor = "red";
+
+    setTimeout(() => {
+        e.target.style.borderColor = "var(--border-primary)";
+    }, 1000)
+}
 
 const createLinkSubmit = (e) => {
     e.preventDefault();

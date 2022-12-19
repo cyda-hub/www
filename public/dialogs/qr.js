@@ -4,10 +4,9 @@ var QR_RESULT = document.getElementById("qr-code-result");
 
 var qr;
 
-const createQRCodePage = (text, readonly = false) => {
+const createQRCodePage = (text) => {
     window.EasyPopup.get("qr-code-popup").open();
 
-    QR_INPUT.readOnly = readonly;
     QR_INPUT.value = text;
     qr.makeCode(text);
 }
@@ -26,7 +25,6 @@ const initQRDialog = (load = false) => {
 
     popup.options.onClose = (data) => {
         QR_INPUT.value = "";
-        QR_INPUT.readOnly = false;
 
         qr.makeCode(" ")
     }

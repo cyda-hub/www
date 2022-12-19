@@ -8,6 +8,11 @@ const ANALYTICS_TABLET_ICON = `<svg class="w-6 h-6" fill="none" stroke="currentC
 const ANALYTICS_BOT_ICON = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"></path></svg>`;
 
 const ANALYTICS_QUESTION_ICON = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+const NO_DATA_AVAILABLE = `
+<div style="transform: translate(-50%, -50%);" class="text-sm font-semibold absolute top-1/2 left-1/2 flex items-center justify-center">
+    No data available!
+</div>
+`;
 
 const filterByDate = (schema, name) => {
     let today = new Date();
@@ -78,6 +83,11 @@ function updateDevices (page = "devices") {
     const elements = filterByDate(window.link_analytics.devices, date_scope);
     const unified = unifyGroupsWithKey(elements, page);
 
+    if (unified.length === 0) {
+        DEVICES_CONTAINER.innerHTML = NO_DATA_AVAILABLE;
+        return;
+    }
+
     let total = 0;
 
     // get the amount
@@ -144,6 +154,11 @@ function updateReferers () {
 
     const elements = filterByDate(window.link_analytics.referers, date_scope);
     const unified = unifyGroups(elements);
+
+    if (unified.length === 0) {
+        REFERERS_CONTAINER.innerHTML = NO_DATA_AVAILABLE;
+        return;
+    }
 
     let total = 0;
     for (const element of unified) {
