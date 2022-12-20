@@ -15,6 +15,9 @@ const callInit = (page, isNew) => {
             reloadPoups();
         }
     }
+
+    window.jsConfetti = new JSConfetti();
+    AOS.init();
 }
 
 const changePage = async (url) => {
