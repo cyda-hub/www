@@ -1,21 +1,29 @@
 <span id="link-view">
-    <div onclick="changePage('links')" class="go-back button bg-gradient" style="width: fit-content; margin-bottom: 2rem;">
-        <svg width="15" height="15" style="margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
-        <span>Go to links</span>
+    <div class="flex items-center justify-between w-full mb-6">
+        <div onclick="changePage('links')" class="go-back button bg-gradient" style="width: fit-content;">
+            <svg width="15" height="15" style="margin-right: 10px;" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+            <span>Go to links</span>
+        </div>
+        <div class="button-selection flex items-center shadow rounded-md p-2 bg-[var(--secondary-color)] text-sm font-semibold">
+            <div class=" active" onclick="changeDateScope(event, 'day');">24h</div>
+            <div class="" onclick="changeDateScope(event, 'week');">Week</div>
+            <div class="" onclick="changeDateScope(event, 'month');">Month</div>
+        </div>
     </div>
     <div class="box">
         <div class="title-space">
             <div class="title">Record of clicks</div>
 
             <!-- yes, same stiles as a title... -->
-            <div class="title">Total amount of clicks are 0</div>
+            <div class="title">Total amount of clicks are <span class="ml-1" id="total-amount-of-clicks"></span></div>
         </div>
+        <canvas id="link-click-chart"></canvas>
     </div>
     <div class="double-box">
         <div class="box relative overflow-hidden">
             <div class="title-space">
                 <div class="title">Devices and enviroments</div>
-                <div class="title devices-selection">
+                <div class="title button-selection">
                     <div onclick="onDeviceSelectionClick(event);" class="active">Devices</div>
                     <div onclick="onDeviceSelectionClick(event);">Browsers</div>
                     <div onclick="onDeviceSelectionClick(event);">OS</div>

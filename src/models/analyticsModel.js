@@ -27,7 +27,7 @@ const schema = new mongoose.Schema({
     locations: {
       type: [valueSchema.schema],
     },
-    linksClicked: {
+    clicks: {
       type: [valueSchema.schema],
     },
     devices: {

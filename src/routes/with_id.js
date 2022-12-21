@@ -21,7 +21,7 @@ export default async (req, res) => {
 
         let referers = analytics.referers;
         let locations = analytics.locations;
-        let linksClicked = analytics.linksClicked;
+        let clicks = analytics.clicks;
         let devices = analytics.devices;
 
         const addIfExistsOrUpdate = (schema, value) => {
@@ -43,7 +43,7 @@ export default async (req, res) => {
         }
 
         {
-          linksClicked.push({ timestamp: now });
+          clicks.push({ timestamp: now });
         }
 
         {
@@ -62,7 +62,7 @@ export default async (req, res) => {
         analytics.updateOne({
           referers,
           locations,
-          linksClicked,
+          clicks,
           devices,
         }).exec();
     }

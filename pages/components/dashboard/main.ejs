@@ -26,9 +26,13 @@
 <script src="/scripts/index.js"></script>
 
 <% if (dashboardPage === "link-view") { %>
+    <script src="/vendor/chartjs/chart.min.js"></script>
+
     <script>window.link_analytics = {
         devices: <%- JSON.stringify(analytics.devices) %>,
         referers: <%- JSON.stringify(analytics.referers) %>,
+        clicks: <%- JSON.stringify(analytics.clicks) %>,
     }</script>
+
     <script src="/scripts/dashboard/link-view.js"></script>
 <% } %>

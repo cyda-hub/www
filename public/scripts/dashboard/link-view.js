@@ -2,6 +2,13 @@
 var date_scope = "day";
 var analytics_allow_bots = false;
 
+var analytics_link_clicks_chart;
+
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
+
 const ANALYTICS_DESKTOP_ICON = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>`;
 const ANALYTICS_MOBILE_ICON = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>`;
 const ANALYTICS_TABLET_ICON = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>`;
@@ -17,11 +24,8 @@ const NO_DATA_AVAILABLE = `
 const filterByDate = (schema, name) => {
     let today = new Date();
 
-    let lastYearStart = new Date(today.getFullYear()-1, 0, 1);
-    let lastYearEnd = new Date(today.getFullYear(), 0, 1);
-
-    let lastMonthEnd = new Date(today.getFullYear(), today.getMonth(), 1);
-    let lastMonthStart = new Date(lastMonthEnd.getFullYear(), lastMonthEnd.getMonth()-1, 1);
+    let lastMonthEnd = new Date(today.getFullYear(), today.getMonth()+1);
+    let lastMonthStart = new Date(lastMonthEnd.getFullYear(), lastMonthEnd.getMonth()-1);
 
     let lastWeekStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()-6);
     let lastWeekEnd = new Date(today.getFullYear(), today.getMonth(), today.getDate()+1);
@@ -37,8 +41,6 @@ const filterByDate = (schema, name) => {
         } else if ((name === "week") && (d.timestamp >= lastWeekStart.getTime() && d.timestamp < lastWeekEnd.getTime())) {
             result.push(d);
         } else if ((name === "month") && (d.timestamp >= lastMonthStart.getTime() && d.timestamp < lastMonthEnd.getTime())) {
-            result.push(d);
-        } else if ((name === "year") && (d.timestamp >= lastYearStart.getTime() && d.timestamp < lastYearEnd.getTime())) {
             result.push(d);
         }
     }
@@ -141,7 +143,7 @@ function updateDevices (page = "devices") {
                     <div>${val.charAt(0) + val.toLowerCase().slice(1)}</div>
                 </div>
                 <div class="z-10 px-3 p-2">
-                    ${element.amount}
+                    ${element.amount} <span class="ml-1 text-xs font-semibold">(${Math.round(percentage)}%)</span>
                 </div>
             </div>
         `;
@@ -184,14 +186,182 @@ function updateReferers () {
                 <div>${val.charAt(0) + val.toLowerCase().slice(1)}</div>
             </div>
             <div class="z-10 px-3 p-2">
-                ${element.amount}
+                ${element.amount} <span class="ml-1 text-xs font-semibold">(${Math.round(percentage)}%)</span>
             </div>
         </div>
         `;
     }
 }
 
+function updateLinkViews() {
+
+    if (typeof analytics_link_clicks_chart !== "undefined") {
+        analytics_link_clicks_chart.destroy();
+    }
+
+    let el = document.getElementById("link-click-chart");
+    let labels = [];
+
+    let timestamps = [];
+    let graph_data = [];
+
+    let total_clicks = 0;
+
+    if (date_scope === "day") {
+        var d = new Date(),
+        h = d.getHours();
+
+        for (var i = 0; i < 24; ++i) {
+            if (h-i < 0) { continue; }
+            else if (i % 3 !== 0) { continue; }
+
+            labels.unshift({t: h-i, c: 0});
+        }
+
+        const elements = filterByDate(window.link_analytics.clicks, date_scope);
+
+        for (const element of elements) {
+            let t = element.timestamp;
+            let hour = new Date(t).getHours();
+            let remainder = hour % 3;
+
+            labels.find(x => (x.t === (hour-remainder)) || ((x.t+3) > (hour-remainder))).c += 1;
+            total_clicks += 1;
+        }
+
+        for (const data of labels) {
+            timestamps.push((data.t.toString().length < 2 ? ("0" + data.t.toString()) : (data.t)) + ":00");
+            graph_data.push(data.c);
+        }
+    } else if (date_scope === "week") {
+        var date = new Date(),
+        d = date.getDay();
+
+        for (var i = 0; i < 7; ++i) {
+            let d = new Date();
+            d.setDate(d.getDate()-i);
+
+            labels.unshift({t: d, c: 0});
+        }
+
+        const elements = filterByDate(window.link_analytics.clicks, date_scope);
+
+        for (const element of elements) {
+            let t = element.timestamp;
+            let day = new Date(t).getDay();
+
+
+            labels.find(x => x.t.getDay() === day).c += 1;
+            total_clicks += 1;
+        }
+
+        for (const data of labels) {
+            timestamps.push((data.t.getDate().toString().length < 2 ? ("0" + data.t.getDate().toString()) : (data.t.getDate())) + " of " + (monthNames[new Date().getMonth()]));
+            graph_data.push(data.c);
+        }
+    }  else if (date_scope === "month") {
+
+        for (var i = 0; i < 30; ++i) {
+            if (i % 3 !== 0) { continue; }
+
+            let d = new Date();
+            d.setDate(d.getDate()-i);
+
+            labels.unshift({t: d, c: 0});
+        }
+
+        const elements = filterByDate(window.link_analytics.clicks, date_scope);
+        console.log(elements)
+
+        for (const element of elements) {
+            let t = element.timestamp;
+            let day = new Date(t).getDate();
+            let remainder = day % 3;
+
+            labels.find(x => (x.t.getDate() === (day-remainder))).c += 1;
+            total_clicks += 1;
+        }
+
+        for (const data of labels) {
+            timestamps.push((data.t.getDate().toString().length < 2 ? ("0" + data.t.getDate().toString()) : (data.t.getDate())) + " " + (monthNames[new Date(data.t).getMonth()]));
+            graph_data.push(data.c);
+        }
+    }
+
+    var gradient = el.getContext("2d").createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(71,87,193, .2)');
+    gradient.addColorStop(1, 'rgba(71,87,193,0)');
+
+    const data = {
+        labels: timestamps,
+        datasets: [{
+          axis: 'y',
+          cubicInterpolationMode: 'monotone',
+          tension: 0.4,
+          borderColor: "#4757C1",
+          pointStyle: false,
+          label: false,
+          data: graph_data,
+
+          fill: true,
+          step: true,
+          scaleShowValues: true,
+
+          pointStrokeColor : "#ff6c23",
+          pointHighlightFill: "#fff",
+          pointHighlightStroke: "#ff6c23",
+
+          backgroundColor: gradient,
+          borderColor: [
+            '#4757C1'
+          ],
+          borderWidth: 4
+        }]
+      };
+
+    analytics_link_clicks_chart = new window.Chart(el, {
+        type: 'line',
+        data: data,
+        options: {
+
+            plugins: {
+                legend: {
+                    display: false
+                },
+            },
+            scales: {
+                y: {
+                    stacked: true,
+                    grid: {
+                        color: getComputedStyle(document.documentElement)
+                            .getPropertyValue('--primary-color')
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        callback: function(value) {if (value % 1 === 0) {return value;}},
+                    },
+
+                    suggestedMax: 10
+                },
+                x : {
+                    grid: {
+                        display: false,
+                    },
+                    ticks: {
+                        autoSkip: true,
+                        padding: 10,
+                        fontSize: 10
+                    },
+                },
+            },
+        }
+    });
+
+    document.getElementById("total-amount-of-clicks").innerHTML = total_clicks;
+}
+
 function updateAllAnalytics() {
+    updateLinkViews();
     updateDevices();
     updateReferers();
 }
@@ -213,7 +383,7 @@ function onDevicesAllowBotChange(e) {
 function onDeviceSelectionClick(e) {
     e.preventDefault();
     let page = "devices";
-    for (const button of document.querySelectorAll("#link-view .box:has(#devices) .devices-selection > div")) {
+    for (const button of document.querySelectorAll("#link-view .box:has(#devices) .button-selection > div")) {
         if (button === e.target) {
             page = button.innerText.toLowerCase();
         }
@@ -223,6 +393,17 @@ function onDeviceSelectionClick(e) {
 
     e.target.classList.add("active");
     updateDevices(page);
+}
+
+function changeDateScope(e, scope) {
+    date_scope = scope;
+
+    for (const button of document.querySelectorAll("#link-view > div:first-child > .button-selection > div")) {
+        button.classList.remove("active");
+    }
+
+    e.target.classList.add("active");
+    updateAllAnalytics();
 }
 
 (function () {
