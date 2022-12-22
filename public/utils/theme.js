@@ -1,6 +1,5 @@
 
 const THEME_SELECTOR = "theme-is-dark-mode"
-const THEME_BG = document.getElementById("theme-changer");
 
 const ROOT = document.querySelector(':root');
 
@@ -25,17 +24,24 @@ const setTheme = (isDark) => {
 
         document.head.appendChild(node);
     } else {
-        ROOT.style.setProperty("--primary-color", "#FFF");
-        ROOT.style.setProperty("--secondary-color", "#F7F8FB");
-        ROOT.style.setProperty("--third-color", "rgb(229, 231, 235)");
+        ROOT.style.setProperty("--primary-color", "rgb(249 250 251/1)");
+        ROOT.style.setProperty("--secondary-color", "#FFF");
+        ROOT.style.setProperty("--third-color", "rgb(229 231 235/1)");
     
-        ROOT.style.setProperty("--border-primary", "rgb(229, 231, 235)");
+        ROOT.style.setProperty("--border-primary", "rgb(229 231 235/1)");
 
         ROOT.style.setProperty("--gradient-start", "#f6dec9");
         ROOT.style.setProperty("--gradient-end", "#dec8f5");
 
-        ROOT.style.setProperty("--primary-cl", "#000");
+        ROOT.style.setProperty("--primary-cl", "rgba(0,0,0,.75)");
         ROOT.style.setProperty("--inverted-cl", "#000");
+    }
+
+    document.documentElement.classList.remove(isDark ? "light" : "dark");
+    document.documentElement.classList.add(isDark ? "dark" : "light");
+
+    if (typeof window.updateAllAnalytics === "function") {
+        window.updateAllAnalytics();
     }
 }
 
@@ -51,10 +57,10 @@ const onload = () => {
 
 onload();
 
-THEME_BG.addEventListener("click", () => {
+function changeThemeOnClick() {
     let isDark = localStorage.getItem(THEME_SELECTOR) === "1";
     let theme = !isDark;
 
     setTheme(theme);
     localStorage.setItem(THEME_SELECTOR, theme ? "1" : "0")
-})
+}

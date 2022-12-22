@@ -73,6 +73,7 @@ body,
 
 body {
     background: var(--primary-color);
+    color: var(--primary-cl);
 }
 
 /* header */
@@ -208,14 +209,14 @@ button.button {
 
 .bg-primary {
     background: var(--primary-color) !important;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    /* box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); */
     color: var(--primary-cl);
     opacity: 0.8;
 }
 
 .bg-secondary {
     background: var(--secondary-color) !important;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    /* box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1); */
     color: var(--primary-cl);
     opacity: 0.8;
 }
@@ -306,7 +307,7 @@ a {
     display: flex;
     flex-direction: column;
 
-    box-shadow: 0 14px 35px 0 rgba(9, 9, 12, 0.4);
+    @apply shadow;
     z-index: 2;
     opacity: 0;
 
@@ -621,12 +622,16 @@ a {
     flex-direction: column;
     align-items: center;
 
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-
+    @apply shadow;
     background: var(--secondary-color);
     padding: 1rem;
 
     overflow: hidden;
+}
+
+.light .box {
+    border: 1px solid var(--border-primary);
+    @apply !shadow-none;
 }
 
 .box.p-0 {

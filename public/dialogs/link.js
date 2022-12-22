@@ -8,11 +8,12 @@ var date = document.getElementById("link-gen-form-date");
 
 var errorDiv = document.getElementById("link-gen-error");
 var linkPopup = document.getElementById("link-gen-popup-link");
-var linkPopupId = document.getElementById("link-gen-popup-link-id");
 
 const setLinkToPopup = (link) => {
+    var linkPopupId = document.getElementById("link-gen-popup-link-id");
+
     linkPopup.innerHTML = `<input type="text" value="${window.location.origin + link}" readonly>`;
-    linkPopupId.innerHTML = `<input type="text" value="${link}" readonly>`;
+    linkPopupId.innerHTML = `<input type="text" value="${link.substring(1)}" readonly>`;
 }
 
 const clearFields = () => {

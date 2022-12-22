@@ -101,7 +101,8 @@
     align-items: center;
 }
 
-#link-view .button-selection > div:not(:first-child) {
+#link-view .button-selection > div:not(:first-child),
+#link-view .button-selection > div.please-style-me--button-selection {
     padding: 5px 7px;
     border-radius: 5px;
 
@@ -113,11 +114,15 @@
 }
 
 #link-view .button-selection > div:not(:first-child).active,
-#link-view .button-selection > div:not(:first-child):hover {
+#link-view .button-selection > div:not(:first-child):hover,
+
+#link-view .button-selection > div.active.please-style-me--button-selection,
+#link-view .button-selection > div.please-style-me--button-selection:hover {
     background: var(--third-color);
 }
 
-#link-view .button-selection > div:not(:first-child):active {
+#link-view .button-selection > div:not(:first-child):active,
+#link-view .button-selection > div.please-style-me--button-selection:active {
     transform: scale(0.9);
 }
 

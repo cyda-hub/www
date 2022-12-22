@@ -5,7 +5,7 @@
             <span>Go to links</span>
         </div>
         <div class="flex items-center">
-            <div class="button-selection relative flex items-center shadow rounded-md p-2 bg-[var(--secondary-color)] text-sm font-semibold">
+            <div class="button-selection relative flex items-center shadow [html.light &]:!shadow-none rounded-md p-2 bg-[var(--secondary-color)] text-sm font-semibold">
                 <div class="relative">
                     <input class="dropdown" type="checkbox" id="dropdown-link-view-selection" name="dropdown"/>
                     <label class="link-dropdown mx-0 hover:!bg-[var(--third-color)]" for="dropdown-link-view-selection">
@@ -49,7 +49,7 @@
             <div class="title-space">
                 <div class="title">Devices and enviroments</div>
                 <div class="title button-selection">
-                    <div onclick="onDeviceSelectionClick(event);" class="active">Devices</div>
+                    <div onclick="onDeviceSelectionClick(event);" class="active please-style-me--button-selection">Devices</div>
                     <div onclick="onDeviceSelectionClick(event);">Browsers</div>
                     <div onclick="onDeviceSelectionClick(event);">OS</div>
                 </div>
