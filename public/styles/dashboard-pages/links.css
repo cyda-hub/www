@@ -64,7 +64,8 @@
     opacity: .7;
 }
 
-#links-container .user-link .link-dropdown {
+#links-container .user-link .link-dropdown,
+#link-view > div:first-child .link-dropdown {
     width: 35px;
     height: 35px;
 
@@ -78,11 +79,13 @@
     cursor: pointer;
 }
 
-#links-container .user-link .link-dropdown:hover {
+#links-container .user-link .link-dropdown:hover,
+#link-view > div:first-child .link-dropdown:hover {
     background: var(--secondary-color);
 }
 
-#links-container .user-link .link-dropdown svg  { width: 15px; height: 15px; }
+#links-container .user-link .link-dropdown svg,
+#link-view > div:first-child .link-dropdown svg  { width: 15px; height: 15px; }
 
 #links-container .user-link div:has(> .link-dropdown) {
     position: relative;

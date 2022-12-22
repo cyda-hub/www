@@ -108,6 +108,14 @@ body,
   pointer-events: none;
 }
 
+.visible {
+  visibility: visible;
+}
+
+.\!visible {
+  visibility: visible !important;
+}
+
 .absolute {
   position: absolute;
 }
@@ -154,39 +162,9 @@ body,
   margin-right: 0.25rem;
 }
 
-.mx-3 {
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
-}
-
-.\!mx-3 {
-  margin-left: 0.75rem !important;
-  margin-right: 0.75rem !important;
-}
-
-.\!mx-2 {
-  margin-left: 0.5rem !important;
-  margin-right: 0.5rem !important;
-}
-
-.\!mx-1 {
-  margin-left: 0.25rem !important;
-  margin-right: 0.25rem !important;
-}
-
-.\!mx-\[0\.5px\] {
-  margin-left: 0.5px !important;
-  margin-right: 0.5px !important;
-}
-
-.\!mx-\[2px\] {
-  margin-left: 2px !important;
-  margin-right: 2px !important;
-}
-
-.\!mx-\[5px\] {
-  margin-left: 5px !important;
-  margin-right: 5px !important;
+.mx-0 {
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .mr-4 {
@@ -241,12 +219,32 @@ body,
   margin-bottom: 1.5rem;
 }
 
+.ml-\[-1rem\] {
+  margin-left: -1rem;
+}
+
+.ml-\[-5px\] {
+  margin-left: -5px;
+}
+
+.ml-\[-4px\] {
+  margin-left: -4px;
+}
+
 .block {
   display: block;
 }
 
+.\!block {
+  display: block !important;
+}
+
 .flex {
   display: flex;
+}
+
+.\!flex {
+  display: flex !important;
 }
 
 .grid {
@@ -285,6 +283,14 @@ body,
   height: 100%;
 }
 
+.h-5 {
+  height: 1.25rem;
+}
+
+.h-7 {
+  height: 1.75rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -308,6 +314,22 @@ body,
 
 .w-8 {
   width: 2rem;
+}
+
+.w-\[1px\] {
+  width: 1px;
+}
+
+.w-\[2px\] {
+  width: 2px;
+}
+
+.w-\[1\.5px\] {
+  width: 1.5px;
+}
+
+.w-\[1\.1px\] {
+  width: 1.1px;
 }
 
 .min-w-\[580px\] {
@@ -384,12 +406,20 @@ body,
   border-bottom-width: 1px;
 }
 
+.border-r {
+  border-right-width: 1px;
+}
+
 .border-solid {
   border-style: solid;
 }
 
 .border-\[var\(--border-primary\)\] {
   border-color: var(--border-primary);
+}
+
+.border-\[var\(--primary-border\)\] {
+  border-color: var(--primary-border);
 }
 
 .bg-\[var\(--secondary-color\)\] {
@@ -412,6 +442,10 @@ body,
 .bg-yellow-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 249 195 / var(--tw-bg-opacity));
+}
+
+.bg-\[var\(--border-primary\)\] {
+  background-color: var(--border-primary);
 }
 
 .p-\[var\(--body-inner-padding\)\] {
@@ -1105,6 +1139,10 @@ a {
 
 .hover\:bg-\[var\(--third-color\)\]:hover {
   background-color: var(--third-color);
+}
+
+.hover\:\!bg-\[var\(--third-color\)\]:hover {
+  background-color: var(--third-color) !important;
 }
 
 .hover\:shadow:hover {

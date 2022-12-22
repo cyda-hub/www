@@ -101,7 +101,7 @@
     align-items: center;
 }
 
-#link-view .button-selection > div {
+#link-view .button-selection > div:not(:first-child) {
     padding: 5px 7px;
     border-radius: 5px;
 
@@ -112,12 +112,12 @@
     user-select: none;
 }
 
-#link-view .button-selection > div.active,
-#link-view .button-selection > div:hover {
+#link-view .button-selection > div:not(:first-child).active,
+#link-view .button-selection > div:not(:first-child):hover {
     background: var(--third-color);
 }
 
-#link-view .button-selection > div:active {
+#link-view .button-selection > div:not(:first-child):active {
     transform: scale(0.9);
 }
 

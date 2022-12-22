@@ -275,10 +275,19 @@ function updateLinkViews() {
 
         for (const element of elements) {
             let t = element.timestamp;
-            let day = new Date(t).getDate();
-            let remainder = day % 3;
+            let d = new Date(t), day = d.getDate();
+            let remainder = (day % 3);
 
-            labels.find(x => (x.t.getDate() === (day-remainder))).c += 1;
+            let cmp = (remainder <= 1 ? (day-(2-remainder)) : (day-remainder));
+            if (remainder === 1) { cmp = day; }
+
+            cmp += d.getMonth();
+
+            labels.find(x =>
+                (
+                    (x.t.getDate() + x.t.getMonth()) === cmp
+                )
+            ).c += 1;
             total_clicks += 1;
         }
 
@@ -398,7 +407,7 @@ function onDeviceSelectionClick(e) {
 function changeDateScope(e, scope) {
     date_scope = scope;
 
-    for (const button of document.querySelectorAll("#link-view > div:first-child > .button-selection > div")) {
+    for (const button of document.querySelectorAll("#link-view > div:first-child .button-selection > div:not(:first-child)")) {
         button.classList.remove("active");
     }
 
