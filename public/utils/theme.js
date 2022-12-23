@@ -40,6 +40,8 @@ const setTheme = (isDark) => {
     document.documentElement.classList.remove(isDark ? "light" : "dark");
     document.documentElement.classList.add(isDark ? "dark" : "light");
 
+    localStorage.setItem(THEME_SELECTOR, isDark ? "1" : "0");
+
     if (typeof window.updateAllAnalytics === "function") {
         window.updateAllAnalytics();
     }
