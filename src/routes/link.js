@@ -10,7 +10,7 @@ import Analytics from "../models/analyticsModel.js";
 const genID = customAlphabet("useandom26T198340PX75pxJACKVERYMINDBUSHWOLFGQZbfghjklqvwyzrict", 7);
 
 export default async (req, res) => {
-    const { destination, code, pwd, date } = req.body;
+    const { destination, code, pwd, date, edit } = req.body;
     let user = undefined;
     let has_errors = false;
 
@@ -22,7 +22,18 @@ export default async (req, res) => {
 
     const originalLink = await URL.findOne({ id });
     if (originalLink) {
+        console.log(edit)
+        if (edit) {
+            originalLink.update({destination, id, pwd: pwd === "" ? "" : cryptr.encrypt(pwd), expireAt: date}).exec();
+            return res.json({
+                message: `/${id}`,
+                type: "success",
+            });
+        }
+
         return res.json({ message: "Link with that code already exists", type: "failure" });
+    } else if (edit) {
+        return res.code(500).json({ message: "Unexpected failure on editing link", type: "failure" });
     }
 
     let newURL;

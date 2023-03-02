@@ -5,6 +5,10 @@ var destination = document.getElementById("link-gen-form-input");
 var code = document.getElementById("link-gen-form-code");
 var pwd = document.getElementById("link-gen-form-pwd");
 var date = document.getElementById("link-gen-form-date");
+var linkGenBtnText = document.getElementById("link-gen-form-btn-text");
+var linkTitleText = document.getElementById("link-dialog-title");
+
+var linkEditMode = false;
 
 var errorDiv = document.getElementById("link-gen-error");
 var linkPopup = document.getElementById("link-gen-popup-link");
@@ -19,8 +23,12 @@ const setLinkToPopup = (link) => {
 const clearFields = () => {
     destination.value = "";
     code.value = "";
+    code.disabled = false;
     pwd.value = "";
     date.value = "";
+    linkGenBtnText.innerHTML = "Generate Link";
+    linkTitleText.innerHTML = "Generate Link";
+    linkEditMode = false;
 };
 
 const handleSubmit = async () => {
@@ -29,7 +37,7 @@ const handleSubmit = async () => {
             "Content-Type": "application/json",
         },
         method: "POST",
-        body: JSON.stringify({ destination: destination.value, code: code.value, pwd: pwd.value, date: date.value }),
+        body: JSON.stringify({ destination: destination.value, code: code.value, pwd: pwd.value, date: date.value, edit: linkEditMode }),
     }).then((response) => response.json());
 
     if (response.type == "failure") {

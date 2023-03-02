@@ -5,10 +5,14 @@ const editLink = (id) => {
 
     destination.value = link.dest;
     code.value = link.id;
+    code.disabled = true;
     pwd.value = link.pwd ?? "";
     date.value = link.expire ?? "";
 
-    // TODO: change button's text
+    linkGenBtnText.innerHTML = "Edit Link";
+    linkTitleText.innerHTML = "Edit Link";
+
+    linkEditMode = true;
 }
 
 const createElementForLink = (link) => {
