@@ -30,11 +30,11 @@ const setTheme = (isDark) => {
     
         ROOT.style.setProperty("--border-primary", "rgb(229 231 235/1)");
 
-        ROOT.style.setProperty("--gradient-start", "#f6dec9");
-        ROOT.style.setProperty("--gradient-end", "#dec8f5");
+        ROOT.style.setProperty("--gradient-start", "rgb(5, 104, 253)");
+        ROOT.style.setProperty("--gradient-end", "rgb(5, 104, 253)");
 
         ROOT.style.setProperty("--primary-cl", "rgba(0,0,0,.75)");
-        ROOT.style.setProperty("--inverted-cl", "#000");
+        ROOT.style.setProperty("--inverted-cl", "#fff");
     }
 
     document.documentElement.classList.remove(isDark ? "light" : "dark");

@@ -6,15 +6,6 @@
     margin: 0 auto;
 }
 
-#links,
-#links .box:first-child {
-    width: 100%;
-}
-
-#links-container.box {
-    padding: 20px 25px;
-}
-
 #links-container .header-wrapper {
     display: flex;
     align-items: center;
@@ -37,35 +28,48 @@
     height: 20px;
 }
 
-#links-container .header-wrapper .title {
+#links-container .header-wrapper .title,
+.highlight-box .title {
     font-size: 1.15rem;
     font-weight: 600;
 }
 
-#links-container .user-link {
-    background: var(--third-color);
-    padding: 9px;
-    border-radius: 5px;
+#links-container .header-wrapper .title > .desc {
+    font-size: 12px;
 
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
+    opacity: .7;
+    margin-top: 5px;
 }
 
-.light #links-container .user-link {
-    background: var(--primary-color);
+#links-container .user-link:first-child {
+    border-top: 1px solid var(--border-primary);
+    padding-top: 20px;
+}
+
+#links-container .user-link {
+    background: var(--secondary-color);
+    /* padding: 9px; */
+    border-radius: 5px;
+    width: 100%;
+
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
 }
 
 #links-container .user-link .link-id {
     font-weight: 600;
     font-size: 15px;
 
+    margin-left: 10px;
     /* margin-bottom: 5px; */
 }
 
 #links-container .user-link .link-dest {
     font-size: 13px;
     opacity: .7;
+    margin-left: 10px;
+
 }
 
 #links-container .user-link .link-dropdown,
@@ -83,16 +87,20 @@
     cursor: pointer;
 }
 
+#links-container .user-link .link-dropdown {
+    border: 1px solid var(--border-primary);
+    padding: 10px;
+}
+
 #links-container .user-link .link-dropdown:hover,
 #link-view > div:first-child .link-dropdown:hover {
-    background: var(--secondary-color);
+    background: var(--third-color);
 }
 
 .light #links-container .user-link .link-dropdown:hover,
 .light #link-view > div:first-child .link-dropdown:hover {
     background: var(--third-color);
 }
-
 
 #links-container .user-link .link-dropdown svg,
 #link-view > div:first-child .link-dropdown svg  { width: 15px; height: 15px; }
@@ -116,7 +124,7 @@
 }
 
 #links-container .user-link .edit-link:hover {
-    background: var(--secondary-color);
+    background: var(--border-primary);
 }
 
 .light #links-container .user-link .edit-link:hover {

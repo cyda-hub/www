@@ -11,10 +11,7 @@ body,
   -moz-tab-size: 4;
     -o-tab-size: 4;
        tab-size: 4;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-        Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
-        Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-  font-feature-settings: normal;
+  font-family: 'Public Sans', sans-serif;
 }
 
 /* @import "tailwindcss/base"; */
@@ -144,6 +141,25 @@ body,
   z-index: 10;
 }
 
+.m-28 {
+  margin: 7rem;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.my-5 {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.mx-72 {
+  margin-left: 18rem;
+  margin-right: 18rem;
+}
+
 .mx-2 {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
@@ -165,6 +181,18 @@ body,
 
 .ml-8 {
   margin-left: 2rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.25rem;
+}
+
+.\!mb-5 {
+  margin-bottom: 1.25rem !important;
+}
+
+.ml-3 {
+  margin-left: 0.75rem;
 }
 
 .mt-4 {
@@ -215,6 +243,10 @@ body,
   margin-left: -4px;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .block {
   display: block;
 }
@@ -233,6 +265,18 @@ body,
 
 .h-screen {
   height: 100vh;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-\[73px\] {
+  height: 73px;
+}
+
+.h-\[1px\] {
+  height: 1px;
 }
 
 .h-6 {
@@ -255,12 +299,12 @@ body,
   height: 2rem;
 }
 
-.h-full {
-  height: 100%;
-}
-
 .w-full {
   width: 100%;
+}
+
+.w-72 {
+  width: 18rem;
 }
 
 .w-6 {
@@ -310,6 +354,10 @@ body,
           user-select: none;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .items-center {
   align-items: center;
 }
@@ -328,10 +376,6 @@ body,
 
 .overflow-hidden {
   overflow: hidden;
-}
-
-.\!overflow-visible {
-  overflow: visible !important;
 }
 
 .rounded {
@@ -362,6 +406,10 @@ body,
   border-bottom-width: 1px;
 }
 
+.border-r {
+  border-right-width: 1px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -374,16 +422,16 @@ body,
   background-color: var(--secondary-color);
 }
 
+.bg-\[var\(--border-primary\)\] {
+  background-color: var(--border-primary);
+}
+
 .bg-\[var\(--third-color\)\] {
   background-color: var(--third-color);
 }
 
 .bg-\[var\(--primary-color\)\] {
   background-color: var(--primary-color);
-}
-
-.bg-\[var\(--border-primary\)\] {
-  background-color: var(--border-primary);
 }
 
 .bg-blue-400 {
@@ -394,6 +442,10 @@ body,
 .bg-yellow-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(254 249 195 / var(--tw-bg-opacity));
+}
+
+.p-2 {
+  padding: 0.5rem;
 }
 
 .p-\[var\(--body-inner-padding\)\] {
@@ -410,10 +462,6 @@ body,
 
 .p-4 {
   padding: 1rem;
-}
-
-.p-2 {
-  padding: 0.5rem;
 }
 
 .py-\[25px\] {
@@ -466,6 +514,11 @@ body,
   line-height: 1.75rem;
 }
 
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -490,12 +543,21 @@ body,
   line-height: 1;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .font-semibold {
   font-weight: 600;
 }
 
 .font-normal {
   font-weight: 400;
+}
+
+.font-bold {
+  font-weight: 700;
 }
 
 .leading-6 {
@@ -713,7 +775,13 @@ button.button {
   color: var(--inverted-cl);
 }
 
-.text-gradient {
+html:not(.light) .just-light,
+html.light .just-dark {
+  display: none;
+}
+
+html:not(.light) .text-gradient,
+html.light .text-gradient:not(.ignore-light) {
   background: -webkit-linear-gradient(
         0.5turn,
         var(--gradient-start),
@@ -721,6 +789,12 @@ button.button {
     );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.light .text-gradient.ignore-light {
+  background: none;
+  color: var(--primary-cl);
+  text-decoration: none;
 }
 
 .border-primary {
@@ -1078,6 +1152,26 @@ a {
 
 .box.p-0 {
   padding: 0;
+}
+
+.highlight-box {
+  width: 100%;
+  border: 1px solid var(--border-primary);
+  padding: 20px;
+  border-radius: 5px;
+  position: relative;
+}
+
+.highlight-box .title > .desc {
+  font-size: 14px;
+  opacity: .7;
+  margin-top: 5px;
+  /* font-weight: 500; */
+}
+
+.highlight-box .button > svg {
+  width: 20px;
+  margin-right: 10px;
 }
 
 .hover\:\!rotate-0:hover {

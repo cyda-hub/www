@@ -3,6 +3,8 @@
     --body-inner-padding: 10%;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap');
+
 html,
 body,
 * {
@@ -11,10 +13,7 @@ body,
     box-sizing: border-box;
 
     tab-size: 4;
-    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-        Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
-        Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-    font-feature-settings: normal;
+    font-family: 'Public Sans', sans-serif;
 }
 
 /* @import "tailwindcss/base"; */
@@ -239,7 +238,13 @@ button.button {
     color: var(--inverted-cl);
 }
 
-.text-gradient {
+html:not(.light) .just-light,
+html.light .just-dark {
+    display: none;
+}
+
+html:not(.light) .text-gradient,
+html.light .text-gradient:not(.ignore-light) {
     background: -webkit-linear-gradient(
         0.5turn,
         var(--gradient-start),
@@ -247,6 +252,12 @@ button.button {
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.light .text-gradient.ignore-light {
+    background: none;
+    color: var(--primary-cl);
+    text-decoration: none;
 }
 
 .border-primary {
@@ -636,4 +647,26 @@ a {
 
 .box.p-0 {
     padding: 0;
+}
+
+.highlight-box {
+    width: 100%;
+    border: 1px solid var(--border-primary);
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.highlight-box .title > .desc {
+    font-size: 14px;
+
+    opacity: .7;
+    margin-top: 5px;
+
+    /* font-weight: 500; */
+}
+
+.highlight-box .button > svg {
+    width: 20px;
+    margin-right: 10px;
 }

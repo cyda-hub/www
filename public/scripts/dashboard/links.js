@@ -65,14 +65,18 @@ const createElementForLink = (link) => {
 
 function updateLinks() {
     const LINKS_CONTAINER = document.querySelector("#links-container > .links-list");
-    console.log(LINKS_CONTAINER)
+    const LINKS_COUNTER = document.querySelector("#links-container #link-count");
 
     // remove all links from container
     while (LINKS_CONTAINER.firstChild) {
         LINKS_CONTAINER.removeChild(LINKS_CONTAINER.firstChild);
     }
 
+    let count = 0;
     for (const link of window.user_info.links) {
         LINKS_CONTAINER.innerHTML += createElementForLink(link);
+        count++;
     }
+
+    LINKS_COUNTER.innerHTML = `You currently have <strong>${count}</strong> links activated`;
 }

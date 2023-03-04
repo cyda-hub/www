@@ -10,8 +10,9 @@ nav .nav-link {
     --nav-link-padding: 10px;
 
     padding: var(--nav-link-padding) calc(var(--nav-link-padding) + 2px);
+    width: 100%;
     border-radius: 5px;
-    margin: 0 10px;
+    margin: 5px 0;
 
     cursor: pointer;
 
@@ -23,17 +24,25 @@ nav .nav-link {
 
     text-decoration: none;
     color: var(--primary-cl);
+
+    display: flex;
+    align-items: center;
+}
+
+nav .nav-link > svg {
+    width: 20px;
+    margin-right: 15px;
 }
 
 nav .nav-link.active::after {
     content: '';
 
     position: absolute;
-    left: 0;
-    top: calc(100% + var(--nav-link-padding) - 2px);
+    right: -9px;
+    top: 0;
 
-    width: 100%;
-    height: 2px;
+    width: 2px;
+    height: 100%;
 
     background: var(--primary-cl);
 }
@@ -41,16 +50,3 @@ nav .nav-link.active::after {
 nav .nav-link:hover {
     background: var(--third-color);
 }
-
-main {
-    display: flex;
-    position: relative;
-
-    margin: 0;
-
-    align-items: flex-start;
-    justify-content: flex-start;
-
-    padding: 5rem 10rem;
-}
-
