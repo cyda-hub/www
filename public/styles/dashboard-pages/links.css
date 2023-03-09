@@ -47,8 +47,7 @@
 }
 
 #links-container .user-link {
-    background: var(--secondary-color);
-    /* padding: 9px; */
+    /* background: var(--primary-color); */
     border-radius: 5px;
     width: 100%;
 

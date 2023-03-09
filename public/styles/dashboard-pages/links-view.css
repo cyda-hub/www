@@ -11,6 +11,10 @@
     min-height: 500px;
 }
 
+#link-view .link-actions {
+    border: 1px solid var(--border-primary);
+}
+
 #link-view .box {
     margin-bottom: 2rem;
     /* border: 1px solid var(--border-primary); */

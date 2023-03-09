@@ -195,6 +195,10 @@ body,
   margin-left: 0.75rem;
 }
 
+.ml-auto {
+  margin-left: auto;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -241,10 +245,6 @@ body,
 
 .ml-\[-4px\] {
   margin-left: -4px;
-}
-
-.ml-auto {
-  margin-left: auto;
 }
 
 .block {
@@ -426,12 +426,12 @@ body,
   background-color: var(--border-primary);
 }
 
-.bg-\[var\(--third-color\)\] {
-  background-color: var(--third-color);
-}
-
 .bg-\[var\(--primary-color\)\] {
   background-color: var(--primary-color);
+}
+
+.bg-\[var\(--third-color\)\] {
+  background-color: var(--third-color);
 }
 
 .bg-blue-400 {
@@ -845,9 +845,7 @@ a {
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  /* @apply shadow; */
   z-index: 2;
   opacity: 0;
   pointer-events: none;

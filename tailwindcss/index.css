@@ -318,7 +318,7 @@ a {
     display: flex;
     flex-direction: column;
 
-    @apply shadow;
+    /* @apply shadow; */
     z-index: 2;
     opacity: 0;
 
