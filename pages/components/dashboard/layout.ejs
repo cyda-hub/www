@@ -1,4 +1,4 @@
-<div class="w-full h-screen relative flex">
+<div class="w-full h-screen overflow-hidden relative flex">
     <nav class="w-72 h-full py-2 relative flex justify-between items-center border-solid border-0 shadow border-r border-[var(--border-primary)] bg-[var(--secondary-color)]">
         <div class="relative flex h-full w-full p-2 my-2 flex-col justify-between">
             <div>
@@ -85,7 +85,7 @@
             </div>
         </nav>
         <div class="bg-[var(--primary-color)] w-full h-full flex relative">
-            <div class="m-28 mx-72 h-full w-full">
+            <div class="m-28 mx-72 w-full overflow-auto">
                 <%- include(`pages/${dashboardPage}.ejs`) %>
             </div>
         </div>

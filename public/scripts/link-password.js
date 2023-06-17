@@ -8,7 +8,7 @@ FORM.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     let val = PASSWORD_INPUT.value;
-    let response = await fetch("/link-pws-check", {
+    let response = await fetch("/link-pwd-check", {
         headers: {
             "Content-Type": "application/json",
         },

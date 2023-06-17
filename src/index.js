@@ -38,7 +38,7 @@ export default () => {
 
     app.get("/", auth_middleware(false), index_route);
     app.post("/link", auth_middleware(false), validateURL, link);
-    app.post("/link-pws-check", link_check);
+    app.post("/link-pwd-check", link_check);
 
     app.get("/app", auth_middleware(), dashboard);
     app.get("/app/links", auth_middleware(), dashboard_links);

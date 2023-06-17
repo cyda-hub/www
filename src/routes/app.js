@@ -66,7 +66,7 @@ export const dashboard_info = async (req, res) => {
         info.links.push({
             id: link.id,
             dest: link.destination,
-            pws: link.pwd === "" ? "" : cryptr.decrypt(link.pwd),
+            pwd: link.pwd === "" ? "" : cryptr.decrypt(link.pwd),
             expire: link.expireAt
         })
     }

@@ -57,9 +57,18 @@ const handleSubmit = async () => {
 };
 
 function shareLink(id) {
+    const link = window.user_info.links.find(element => element.id === id);
     let url = `${window.location.origin}/${id}`;
 
     document.getElementById("share-link-url-preview").value = url;
+
+    if (link.pwd) {
+        document.getElementById("share-link-password-section").style.display = "block";
+        document.getElementById("share-link-pwd-preview").value = link.pwd;
+    } else {
+        document.getElementById("share-link-password-section").style.display = "none";        
+    }
+
     window.EasyPopup.get("share-link-popup").open();
 }
 
@@ -84,6 +93,45 @@ function copySharedURL(e) {
 
     try {
 
+        var successful = document.execCommand('copy');
+        if (successful) {
+            e.target.style.borderColor = "green";
+
+            setTimeout(() => {
+                e.target.style.borderColor = "var(--border-primary)";
+            }, 1000)
+
+            document.body.removeChild(textArea);
+            return;
+        }
+    } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+    }
+
+    document.body.removeChild(textArea);
+    e.target.style.borderColor = "red";
+
+    setTimeout(() => {
+        e.target.style.borderColor = "var(--border-primary)";
+    }, 1000)
+}
+
+function copyPasswordFromSharedURL(e) {
+    let elem = document.getElementById("share-link-pwd-preview")
+
+    var textArea = document.createElement("textarea");
+    textArea.value = elem.value;
+    
+    // Avoid scrolling to bottom
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
         var successful = document.execCommand('copy');
         if (successful) {
             e.target.style.borderColor = "green";
