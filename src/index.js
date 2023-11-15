@@ -8,7 +8,7 @@ import with_id from "./routes/with_id.js";
 import link_check from "./routes/link_check.js";
 import link from "./routes/link.js";
 
-import dashboard, { dashboard_links, dashboard_link, dashboard_settings, dashboard_info } from "./routes/app.js";
+import dashboard, { dashboard_link, dashboard_settings, dashboard_info } from "./routes/app.js";
 
 import auth from "./routes/auth/auth.js";
 import auth_middleware from "./middleware/auth.js";
@@ -41,7 +41,6 @@ export default () => {
     app.post("/link-pwd-check", link_check);
 
     app.get("/app", auth_middleware(), dashboard);
-    app.get("/app/links", auth_middleware(), dashboard_links);
     app.get("/app/settings", auth_middleware(), dashboard_settings);
     app.get("/app/link/:id", auth_middleware(), dashboard_link);
     app.get("/app/_info", auth_middleware(), dashboard_info);

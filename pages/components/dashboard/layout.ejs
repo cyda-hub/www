@@ -1,31 +1,8 @@
 <div class="w-full h-screen overflow-hidden relative flex">
-    <nav class="w-72 h-full py-2 relative flex justify-between items-center border-solid border-0 shadow border-r border-[var(--border-primary)] bg-[var(--secondary-color)]">
+    <nav class="w-80 h-full py-2 relative flex justify-between items-center border-solid border-0 shadow border-r border-[var(--border-primary)] bg-[var(--secondary-color)]">
         <div class="relative flex h-full w-full p-2 my-2 flex-col justify-between">
             <div>
-                <div class="h-[73px] mb-5 border-solid border-0 border-b border-[var(--border-primary)]"></div>
-                <div onclick="<% if (dashboardPage !== "home") { %> changePage('')<% } %>" class="nav-link <% if (dashboardPage === "home"    ) { %> active <% } %>">
-                    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
-                    </svg>
-                    <span>Dashboard</span>
-                </div>
-                <div onclick="<% if (dashboardPage !== "links") { %> changePage('links')<% } %>" class="nav-link <% if (dashboardPage === "links" || dashboardPage === "link-view"   ) { %> active <% } %>">
-                    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
-                    </svg>
-                    <span>My links</span>
-                </div>
-            </div>
-            <div>
-                <div class="w-full my-5 h-[1px] bg-[var(--border-primary)]"></div>
-                <div onclick="<% if (dashboardPage !== "settings") { %> changePage('settings')<% } %>" class="nav-link !mb-5 <% if (dashboardPage === "settings") { %> active <% } %>">
-                    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"></path>
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    </svg>
-                    <span>Settings</span>
-                </div>
-                <a href="/" class="text-gradient ignore-light text-lg w-full ml-3 font-semibold flex items-center">
+                <a href="/" class="text-gradient no-underline ignore-light text-lg w-full ml-3 mt-2 font-semibold flex items-center">
                     <svg class="mr-4 just-dark" width="20" height="20" viewBox="0 0 150 150" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_1_2)">
                         <rect width="150" height="150" fill="#2A2D39"/>
@@ -55,37 +32,52 @@
                         </clipPath>
                         </defs>
                     </svg>
-                    <div>Cyda</div>
+                    <div class="no-underline">Cyda</div>
                 </a>
+                <div class="h-[1px] my-5 bg-[var(--border-primary)] w-full"></div>
+                <div onclick="<% if (dashboardPage !== "home") { %> changePage('')<% } %>" class="nav-link <% if (dashboardPage === "home"    ) { %> active <% } %>">
+                    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"></path>
+                    </svg>
+                    <span>Dashboard</span>
+                </div>
+            </div>
+            <div>
+                <div class="w-full my-5 h-[1px] bg-[var(--border-primary)]"></div>
+                <div onclick="<% if (dashboardPage !== "settings") { %> changePage('settings')<% } %>" class="nav-link !mb-3 <% if (dashboardPage === "settings") { %> active <% } %>">
+                    <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                    </svg>
+                    <span>Settings</span>
+                </div>
+                <div class="flex items-center justify-between w-full mb-2">
+                    <div style="position: relative;" class="w-full">
+                        <input class="dropdown" type="checkbox" id="dropdown-link-${link.id}" name="dropdown"/>
+                        <label style="display: block;" class="link-dropdown for-dropdown" for="dropdown-link-${link.id}">
+                            <div class="py-2 px-3 font-semibold cursor-pointer rounded select-none text-sm border-primary">
+                                <%= user.email %>
+                            </div>
+                        </label>
+                        <div style="margin-bottom: 10px;" class="section-dropdown !w-full">
+                            <a href="#" onclick="setTheme(!(localStorage.getItem(THEME_SELECTOR) === '1'))">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                                <span>Change theme</span>
+                            </a>
+                            <!-- TODO -->
+                            <a href="#" onclick="logoutUser()">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
     <div class="w-full">
-        <nav class="flex border-solid border-0 border-b border-[var(--border-primary)] justify-between items-center py-[25px] px-[100px] bg-[var(--secondary-color)]">
-            <div class="flex items-center justify-between ml-auto">
-                <div style="position: relative;">
-                    <input class="dropdown" type="checkbox" id="dropdown-link-${link.id}" name="dropdown"/>
-                    <label style="display: block;" class="link-dropdown for-dropdown" for="dropdown-link-${link.id}">
-                        <div class="py-2 px-3 font-semibold cursor-pointer rounded select-none border-primary">
-                            <%= user.email %>
-                        </div>
-                    </label>
-                    <div style="margin-top: 10px;" class="section-dropdown">
-                        <a href="#" onclick="setTheme(!(localStorage.getItem(THEME_SELECTOR) === '1'))">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
-                            <span>Change theme</span>
-                        </a>
-                        <!-- TODO -->
-                        <a href="#" onclick="logoutUser()">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-                            <span>Logout</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </nav>
         <div class="bg-[var(--primary-color)] w-full h-full flex relative">
-            <div class="m-28 mx-72 w-full overflow-auto">
+            <div class="mt-28 mx-96 w-full">
                 <%- include(`pages/${dashboardPage}.ejs`) %>
             </div>
         </div>

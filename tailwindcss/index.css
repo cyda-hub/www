@@ -305,7 +305,7 @@ a {
     background-color: var(--secondary-color);
     border: 1px solid var(--border-primary);
 
-    top: 100%;
+    bottom: 100%;
     left: 0;
 
     max-width: 500px;
@@ -323,14 +323,14 @@ a {
     opacity: 0;
 
     pointer-events: none;
-    transform: translateY(5px);
-    transition: all 200ms linear;
+    transform: translateY(-50%);
+    transition: all 100ms linear;
 }
 
 .dropdown:checked ~ .section-dropdown {
     opacity: 1;
     pointer-events: auto;
-    transform: translateY(0);
+    transform: translateY(-10px);
 }
 
 .dropdown ~ .section-dropdown > hr {

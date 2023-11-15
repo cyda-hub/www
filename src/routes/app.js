@@ -16,16 +16,6 @@ export default async (req, res) => {
     });
 }
 
-export const dashboard_links = async (req, res) => {
-    const user = await User.findById(req.user.id);
-
-    return res.render("dashboard/index.ejs", {
-        user,
-        dashboardPage: 'links',
-        url: createURL(req)
-    });
-}
-
 export const dashboard_settings = async (req, res) => {
     const user = await User.findById(req.user.id);
 
@@ -42,7 +32,7 @@ export const dashboard_link = async (req, res) => {
 
     const originalLink = await URL.findOne({ id });
     if ((!originalLink) || (originalLink.owner != user._id)) {
-      return res.redirect("/app/links");
+      return res.redirect("/app");
     }
 
     const analytics = await Analytics.findOne({ linkID: originalLink._id });

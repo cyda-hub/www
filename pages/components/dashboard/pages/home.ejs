@@ -1,5 +1,5 @@
 <span id="index">
-    <div class="text-3xl mb-5 font-bold">Welcome back! 👋</div>
+    <!--<div class="text-3xl mb-5 font-bold">Welcome back! 👋</div>
     <div class="highlight-box">
         <div class="w-full flex items-center justify-between">
             <div class="title">
@@ -13,5 +13,23 @@
                 Create new link
             </a>
         </div>
-    </div>
+    </div>-->
+
+    <span id="links">
+        <div id="links-container">
+            <div class="header-wrapper">
+                <div class="title">
+                    Created links
+                    <div class="desc" id="link-count"></div>
+                </div>
+                <a href="#link-gen-popup" class="button bg-gradient create-new">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                    Create new link
+                </a>
+            </div>
+            <div class="links-list">
+            </div>
+            <%# TODO: if there r no links, display a message with an empty dialog, containging an image and a button to add a new one. %>
+        </div>
+    </span>
 </span>

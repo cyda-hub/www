@@ -7,13 +7,9 @@ const reloadPoups = () => {
 }
 
 const callInit = (page, isNew) => {
-    if (page === "links") {
-
-        updateLinks();
-
-        if (isNew) {
-            reloadPoups();
-        }
+    updateLinks();
+    if (isNew) {
+        reloadPoups();
     }
 
     window.jsConfetti = new JSConfetti();

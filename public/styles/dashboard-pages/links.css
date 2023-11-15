@@ -1,9 +1,11 @@
 
 #links {
-    max-width: 56rem;
     position: relative;
-
     margin: 0 auto;
+}
+
+#links-container {
+    margin-top: 80px;
 }
 
 #links-container .header-wrapper {
@@ -30,7 +32,7 @@
 
 #links-container .header-wrapper .title,
 .highlight-box .title {
-    font-size: 1.15rem;
+    font-size: 1.7rem;
     font-weight: 600;
 }
 
